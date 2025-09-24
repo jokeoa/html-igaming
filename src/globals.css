@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Geist', sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button Styles */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.3s;
+    gap: 6px;
+}
+
+.btn-outline {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #ff6500, #ff8434);
+    color: white;
+    border: none;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to right, #e55a00, #e57129);
+}
+
+.github-icon {
+    width: 20px;
+    height: 19.5px;
+}
+
+.logo-svg {
+    height: 36px;
+    width: auto;
+}
+
+.footer-logo-svg {
+    height: 48px;
+    width: auto;
+}
+
+/* Header Styles */
+.header {
+    background-color: #1e3e62;
+    padding: 15px 30px;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo-text {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 600;
+    font-size: 36px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo-badge {
+    background-color: #1e3e62;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 0 13.5px 4.5px 13.5px;
+    position: relative;
+}
+
+.logo-badge::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #ff6500;
+    border-radius: 0 0 6px 6px;
+}
+
+.logo-casino {
+    font-weight: 500;
+    font-size: 22.5px;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1e3e62;
+    padding: 15px 30px 45px;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-logo-text {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 600;
+    font-size: 48px;
+    color: white;
+}
+
+.footer-logo-badge {
+    background-color: #1e3e62;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 0 18px 6px 18px;
+    position: relative;
+}
+
+.footer-logo-badge::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #ff6500;
+    border-radius: 0 0 6px 6px;
+}
+
+.footer-casino {
+    font-weight: 500;
+    font-size: 30px;
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 29px;
+    font-family: 'Geist Mono', monospace;
+}
+
+.footer-link {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #ff6500;
+}
+
+.footer-description {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 300;
+    font-size: 14px;
+    color: white;
+    line-height: 1.4;
+}
