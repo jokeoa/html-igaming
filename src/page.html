@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Casino</title>
+    <link rel="stylesheet" href="globals.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 200px);
+        }
+
+        .coins-section {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .coin-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform: rotate(60deg);
+        }
+
+        .coin {
+            position: absolute;
+            background-image: url('../public/coins.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        .coin-large {
+            width: 300px;
+            height: 300px;
+            top: 0;
+            left: 0;
+        }
+
+        .coin-medium {
+            width: 200px;
+            height: 200px;
+            top: 50px;
+            left: 100px;
+        }
+
+        .coin-small {
+            width: 140px;
+            height: 140px;
+            top: 80px;
+            left: 80px;
+        }
+
+        .content-section {
+            flex: 1;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-left: 40px;
+        }
+
+        .main-title {
+            font-family: 'Geist', sans-serif;
+            font-weight: bold;
+            font-size: clamp(48px, 6vw, 72px);
+            line-height: 1.1;
+            color: white;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-family: 'Geist Mono', monospace;
+            font-weight: normal;
+            font-size: 20px;
+            color: white;
+            margin: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        body {
+            background: linear-gradient(180deg, #0b192c 0%, #173763 100%);
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="../public/Logo.svg" alt="HTML casino" class="logo-svg">
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <a href="#" class="btn btn-outline">
+                    <img src="../public/GitHub.svg" alt="GitHub" class="github-icon">
+                    GitHub
+                </a>
+                <a href="#" class="btn btn-gradient">Play games</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main-content">
+        <div class="coins-section">
+            <div class="coin-container">
+                <div class="coin coin-large"></div>
+                <div class="coin coin-medium"></div>
+                <div class="coin coin-small"></div>
+            </div>
+        </div>
+        <div class="content-section">
+            <h1 class="main-title">Here you will lose all your money!</h1>
+            <p class="subtitle">But we haven't implemented it here yet.</p>
+            <div class="button-group">
+                <a href="#" class="btn btn-gradient">Play games</a>
+                <a href="#" class="btn btn-outline">About</a>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="../public/Logo.svg" alt="HTML casino" class="footer-logo-svg">
+                </div>
+                <a href="#" class="btn btn-gradient">Play games</a>
+            </div>
+            <div class="footer-bottom">
+                <nav class="footer-links">
+                    <a href="#" class="footer-link">Main</a>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">User policy</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Games</a>
+                    <a href="#" class="footer-link">Site map</a>
+                    <a href="#" class="footer-link">Contacts</a>
+                </nav>
+                <p class="footer-description">
+                    Made by Yandex Gophers team for Web Technologies 1 course. This project was created for educational purposes by the student team at Astana IT University.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
