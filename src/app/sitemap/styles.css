@@ -1,8 +1,13 @@
 
 .container {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  margin: 30px auto;
+  padding: 40px;
+  background: rgba(30, 58, 138, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .sitemap-title {
@@ -156,23 +161,6 @@
   margin-top: 40px;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #ff6500, #ff8434);
-  padding: 12px 24px;
-  font-size: 16px;
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 10px 22px;
-  font-size: 16px;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-}
 
 @media (max-width: 768px) {
   .sitemap-title {
