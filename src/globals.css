@@ -9,10 +9,12 @@
 
 body {
     font-family: 'Geist', sans-serif;
+    background: linear-gradient(180deg, #0b192c 0%, #173763 100%);
     color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
 /* Button Styles */

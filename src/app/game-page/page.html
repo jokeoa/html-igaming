@@ -1,113 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blackjack - HTML Casino</title>
-    <link rel="stylesheet" href="../../globals.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <div class="header-content">
-            <div class="header-left">
-                <div class="logo">
-                    <img src="../../../public/Logo.svg" alt="HTML casino" class="logo-svg">
-                </div>
-                <nav class="nav-links">
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">FAQ</a>
-                </nav>
-            </div>
-            <div class="header-right">
-                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline">
-                    <img src="../../../public/GitHub.svg" alt="GitHub" class="github-icon">
-                    GitHub
-                </a>
-                <a href="#" class="btn btn-gradient">Play games</a>
-            </div>
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="logo-svg"
+              />
+            </a>
+          </div>
+          <nav class="nav-links">
+            <a href="../about/page.html" class="nav-link">About</a>
+            <a href="../faq/page.html" class="nav-link">FAQ</a>
+          </nav>
         </div>
+        <div class="header-right">
+          <a
+            href="https://github.com/jokeoa/html-casino"
+            class="btn btn-outline"
+          >
+            <img
+              src="../../../public/GitHub.svg"
+              alt="GitHub"
+              class="github-icon"
+            />
+            GitHub
+          </a>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+      </div>
     </header>
 
     <main class="game-main">
-        <div class="game-container">
-            <div class="game-header">
-                <h1 class="game-title">Blackjack</h1>
-                <p class="game-subtitle">Classic card game where you aim to get 21</p>
-            </div>
-
-            <div class="game-content">
-                <div class="game-image-section">
-                    <div class="game-image-placeholder">
-                        <span class="placeholder-text">Game Screenshot</span>
-                    </div>
-                </div>
-
-                <div class="game-info-section">
-                    <div class="game-description">
-                        <h2>About Blackjack</h2>
-                        <p>Blackjack is one of the most popular casino card games. The goal is simple: get your hand value as close to 21 as possible without going over. Face cards are worth 10, Aces can be 1 or 11, and all other cards are worth their face value.</p>
-
-                        <h3>How to Play</h3>
-                        <ul>
-                            <li>You and the dealer each get 2 cards to start</li>
-                            <li>Your cards are face up, dealer has one face down</li>
-                            <li>Hit to take another card, Stand to keep your current total</li>
-                            <li>If you go over 21, you bust and lose</li>
-                            <li>Beat the dealer's hand without busting to win!</li>
-                        </ul>
-
-                        <div class="game-stats">
-                            <div class="stat">
-                                <span class="stat-label">Difficulty:</span>
-                                <span class="stat-value">Easy</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Min Bet:</span>
-                                <span class="stat-value">$5</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Max Bet:</span>
-                                <span class="stat-value">$500</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="game-actions">
-                        <a href="#" class="btn btn-gradient play-button">Play Now</a>
-                        <a href="#" class="btn btn-outline">Back to Games</a>
-                    </div>
-                </div>
-            </div>
+      <div class="game-container">
+        <div class="game-header">
+          <h1 class="game-title">Blackjack</h1>
+          <p class="game-subtitle">Classic card game where you aim to get 21</p>
         </div>
+
+        <div class="game-content">
+          <div class="game-image-section">
+            <div class="game-image-placeholder">
+              <span class="placeholder-text">Game Screenshot</span>
+            </div>
+          </div>
+
+          <div class="game-info-section">
+            <div class="game-description">
+              <h2>About Blackjack</h2>
+              <p>
+                Blackjack is one of the most popular casino card games. The goal
+                is simple: get your hand value as close to 21 as possible
+                without going over. Face cards are worth 10, Aces can be 1 or
+                11, and all other cards are worth their face value.
+              </p>
+
+              <h3>How to Play</h3>
+              <ul>
+                <li>You and the dealer each get 2 cards to start</li>
+                <li>Your cards are face up, dealer has one face down</li>
+                <li>
+                  Hit to take another card, Stand to keep your current total
+                </li>
+                <li>If you go over 21, you bust and lose</li>
+                <li>Beat the dealer's hand without busting to win!</li>
+              </ul>
+
+              <div class="game-stats">
+                <div class="stat">
+                  <span class="stat-label">Difficulty:</span>
+                  <span class="stat-value">Easy</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Min Bet:</span>
+                  <span class="stat-value">$5</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Max Bet:</span>
+                  <span class="stat-value">$500</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="game-actions">
+              <a href="#" class="btn btn-gradient play-button">Play Now</a>
+              <a href="../catalog/page.html" class="btn btn-outline"
+                >Back to Games</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-top">
-                <div class="footer-logo">
-                    <img src="../../../public/Logo.svg" alt="HTML casino" class="footer-logo-svg">
-                </div>
-                <a href="#" class="btn btn-gradient">Play games</a>
-            </div>
-            <div class="footer-bottom">
-                <nav class="footer-links">
-                    <a href="#" class="footer-link">Main</a>
-                    <a href="#" class="footer-link">About</a>
-                    <a href="#" class="footer-link">User policy</a>
-                    <a href="#" class="footer-link">FAQ</a>
-                    <a href="#" class="footer-link">Games</a>
-                    <a href="#" class="footer-link">Site map</a>
-                    <a href="#" class="footer-link">Contacts</a>
-                </nav>
-                <p class="footer-description">
-                    Made by Yandex Gophers team for Web Technologies 1 course. This project was created for educational purposes by the student team at Astana IT University.
-                </p>
-            </div>
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
         </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link"
+              >User policy</a
+            >
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+            <a href="../about/page.html" class="footer-link">Contacts</a>
+          </nav>
+          <p class="footer-description">
+            Made by Yandex Gophers team for Web Technologies 1 course. This
+            project was created for educational purposes by the student team at
+            Astana IT University.
+          </p>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

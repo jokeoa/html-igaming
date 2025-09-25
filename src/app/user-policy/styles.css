@@ -1,133 +1,41 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Geist Mono', monospace;
-    background-color: #173763;
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 30px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo h1 {
-    font-size: 24px;
-    font-weight: 500;
-    color: white;
-    font-family: 'Geist Mono', monospace;
-}
-
-
-.logo img.badge {
-    height: 24px;
-    width: auto;
-    object-fit: contain;
-}
-
-
-.nav-buttons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 16px;
-    font-family: 'Geist Mono', monospace;
-    font-weight: 400;
-    transition: color 0.2s;
-}
-
-.nav-link:hover {
-    color: white;
-}
-
-.btn {
-    background: #d97706;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-family: 'Geist Mono', monospace;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-}
-
-.btn:hover {
-    background: #b45309;
-}
-
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: rgba(30, 58, 138, 0.3);
-    border-radius: 12px;
-    padding: 40px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(30, 58, 138, 0.3);
+  border-radius: 12px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .policy-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-align: center;
-    color: white;
-    font-family: 'Geist Mono', monospace;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+  font-family: "Geist Mono", monospace;
 }
 
 .policy-content {
-    line-height: 1.7;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.9);
-    font-family: 'Geist Mono', monospace;
-    font-weight: 400;
+  line-height: 1.7;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Geist Mono", monospace;
+  font-weight: 400;
 }
 
 .policy-content h3 {
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 25px 0 15px 0;
-    font-family: 'Geist Mono', monospace;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 25px 0 15px 0;
+  font-family: "Geist Mono", monospace;
 }
 
 .policy-content p {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-.footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    font-family: 'Geist Mono', monospace;
-    font-weight: 400;
-}

@@ -1,135 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML Casino - FAQ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fAQ.css">
-</head>
-<body>
-    <div class="header">
-        <div class="logo">
-            <h1>HTML</h1>
-            <span class="badge">casino</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="logo-svg"
+              />
+            </a>
+          </div>
+          <nav class="nav-links">
+            <a href="../about/page.html" class="nav-link">About</a>
+            <a href="../faq/page.html" class="nav-link">FAQ</a>
+          </nav>
         </div>
-        <div class="nav-buttons">
-            <a href="About.html" class="nav-link">About</a>
-            <a href="#" class="btn">Play games</a>
+        <div class="header-right">
+          <a
+            href="https://github.com/jokeoa/html-casino"
+            class="btn btn-outline"
+          >
+            <img
+              src="../../../public/GitHub.svg"
+              alt="GitHub"
+              class="github-icon"
+            />
+            GitHub
+          </a>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
         </div>
-    </div>
+      </div>
+    </header>
 
     <div class="container">
-        <h1 class="policy-title">FAQ</h1>
-        <h2 class="policy-subtitle">Frequently Asked Questions</h2>
-        
-        <div class="policy-content">
-            <p style="text-align: center; margin-bottom: 30px; color: rgba(255, 255, 255, 0.7);">
-                Click on any question to reveal the answer
+      <h1 class="policy-title">FAQ</h1>
+      <h2 class="policy-subtitle">Frequently Asked Questions</h2>
+
+      <div class="policy-content">
+        <p
+          style="
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+          "
+        >
+          Click on any question to reveal the answer
+        </p>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq1" class="faq-toggle">
+          <label for="faq1" class="faq-question">
+            <span>What is HTML Casino?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              HTML Casino is an educational demonstration platform developed by
+              students at Astana IT University. It serves as a learning tool for
+              web development technologies and does not involve real gambling or
+              monetary transactions.
             </p>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What is HTML Casino?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>HTML Casino is an educational demonstration platform developed by students at Astana IT University. It serves as a learning tool for web development technologies and does not involve real gambling or monetary transactions.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Is this real gambling?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>No, HTML Casino is purely educational and does not involve real money, actual gambling, or any monetary transactions. All games are demonstration versions created for learning purposes only.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Who can access the platform?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The platform is designed for educational use by students, developers, and anyone interested in learning about web technologies. Access is recommended for users 18+ to maintain consistency with gambling-related content standards.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What technologies are used?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The platform currently utilizes fundamental web technologies including HTML, CSS, and JavaScript. The project demonstrates modern front-end development practices and responsive design principles.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Can I contribute to the project?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! We welcome constructive feedback, bug reports, and suggestions for improvement. You can contribute through the official project repository or designated academic channels at Astana IT University.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Is the platform always available?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>As a student development project, the platform may experience occasional downtime or technical limitations. We endeavor to maintain functionality during active development periods but cannot guarantee continuous operation.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How do I report technical issues?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Technical issues should be reported through the established feedback mechanisms in the project repository or through designated academic channels. Please do not attempt unauthorized access or modification of platform features.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Will new features be added?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, the platform is under active development. New features and improvements are regularly added as part of the ongoing educational project. Updates will be communicated through appropriate channels.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Is my data collected?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The platform operates with minimal data collection practices. User interactions are logged solely for technical functionality and educational assessment. No personal financial information is collected or stored.</p>
-                </div>
-            </div>
-
-            <div class="disclaimer" style="margin-top: 30px;">
-                <p><strong>Still have questions?</strong> Contact the development team through the official project repository or designated academic channels at Astana IT University.</p>
-            </div>
+          </div>
         </div>
-        
-        <div class="footer">
-            Madiyar Sarbayev, Vladislav Kuchenko, Bolatov Bekdaulet, Amir Alenov
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq2" class="faq-toggle">
+          <label for="faq2" class="faq-question">
+            <span>Is this real gambling?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              No, HTML Casino is purely educational and does not involve real
+              money, actual gambling, or any monetary transactions. All games
+              are demonstration versions created for learning purposes only.
+            </p>
+          </div>
         </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq3" class="faq-toggle">
+          <label for="faq3" class="faq-question">
+            <span>Who can access the platform?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              The platform is designed for educational use by students,
+              developers, and anyone interested in learning about web
+              technologies. Access is recommended for users 18+ to maintain
+              consistency with gambling-related content standards.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq4" class="faq-toggle">
+          <label for="faq4" class="faq-question">
+            <span>What technologies are used?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              The platform currently utilizes fundamental web technologies
+              including HTML, CSS, and JavaScript. The project demonstrates
+              modern front-end development practices and responsive design
+              principles.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq5" class="faq-toggle">
+          <label for="faq5" class="faq-question">
+            <span>Can I contribute to the project?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              Yes! We welcome constructive feedback, bug reports, and
+              suggestions for improvement. You can contribute through the
+              official project repository or designated academic channels at
+              Astana IT University.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq6" class="faq-toggle">
+          <label for="faq6" class="faq-question">
+            <span>Is the platform always available?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              As a student development project, the platform may experience
+              occasional downtime or technical limitations. We endeavor to
+              maintain functionality during active development periods but
+              cannot guarantee continuous operation.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq7" class="faq-toggle">
+          <label for="faq7" class="faq-question">
+            <span>How do I report technical issues?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              Technical issues should be reported through the established
+              feedback mechanisms in the project repository or through
+              designated academic channels. Please do not attempt unauthorized
+              access or modification of platform features.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq8" class="faq-toggle">
+          <label for="faq8" class="faq-question">
+            <span>Will new features be added?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              Yes, the platform is under active development. New features and
+              improvements are regularly added as part of the ongoing
+              educational project. Updates will be communicated through
+              appropriate channels.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <input type="checkbox" id="faq9" class="faq-toggle">
+          <label for="faq9" class="faq-question">
+            <span>Is my data collected?</span>
+            <span class="faq-icon"></span>
+          </label>
+          <div class="faq-answer">
+            <p>
+              The platform operates with minimal data collection practices. User
+              interactions are logged solely for technical functionality and
+              educational assessment. No personal financial information is
+              collected or stored.
+            </p>
+          </div>
+        </div>
+
+        <div class="disclaimer" style="margin-top: 30px">
+          <p>
+            <strong>Still have questions?</strong> Contact the development team
+            through the official project repository or designated academic
+            channels at Astana IT University.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <script src="fAQ.js"></script>
-</body>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link"
+              >User policy</a
+            >
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+            <a href="../about/page.html" class="footer-link">Contacts</a>
+          </nav>
+          <p class="footer-description">
+            Made by Yandex Gophers team for Web Technologies 1 course. This
+            project was created for educational purposes by the student team at
+            Astana IT University.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>

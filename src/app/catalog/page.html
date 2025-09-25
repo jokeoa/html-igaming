@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Catalog - HTML Casino</title>
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="logo-svg"
+              />
+            </a>
+          </div>
+          <nav class="nav-links">
+            <a href="../about/page.html" class="nav-link">About</a>
+            <a href="../faq/page.html" class="nav-link">FAQ</a>
+          </nav>
+        </div>
+        <div class="header-right">
+          <a
+            href="https://github.com/jokeoa/html-casino"
+            class="btn btn-outline"
+          >
+            <img
+              src="../../../public/GitHub.svg"
+              alt="GitHub"
+              class="github-icon"
+            />
+            GitHub
+          </a>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="catalog-main">
+      <div class="catalog-container">
+        <div class="catalog-header">
+          <h1 class="catalog-title">Game Catalog</h1>
+          <p class="catalog-subtitle">
+            Choose from our collection of classic casino games
+          </p>
+        </div>
+
+        <div class="games-grid">
+          <div class="game-card available">
+            <div class="game-image">
+              <span class="game-placeholder">♠️</span>
+            </div>
+            <div class="game-info">
+              <h3 class="game-name">Blackjack</h3>
+              <p class="game-description">
+                Classic card game where you aim to get 21
+              </p>
+              <div class="game-stats">
+                <span class="difficulty easy">Easy</span>
+                <span class="players">1 Player</span>
+              </div>
+              <a href="../game-page/page.html" class="btn btn-gradient"
+                >Play Now</a
+              >
+            </div>
+          </div>
+
+          <div class="game-card coming-soon">
+            <div class="game-image">
+              <span class="game-placeholder">♥️</span>
+            </div>
+            <div class="game-info">
+              <h3 class="game-name">Poker</h3>
+              <p class="game-description">Texas Hold'em poker game</p>
+              <div class="game-stats">
+                <span class="difficulty medium">Medium</span>
+                <span class="players">2-8 Players</span>
+              </div>
+              <button class="btn btn-disabled" disabled>Coming Soon</button>
+            </div>
+          </div>
+
+          <div class="game-card coming-soon">
+            <div class="game-image">
+              <span class="game-placeholder">🎯</span>
+            </div>
+            <div class="game-info">
+              <h3 class="game-name">Roulette</h3>
+              <p class="game-description">Classic casino roulette wheel</p>
+              <div class="game-stats">
+                <span class="difficulty easy">Easy</span>
+                <span class="players">1+ Players</span>
+              </div>
+              <button class="btn btn-disabled" disabled>Coming Soon</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog-info">
+          <div class="info-section">
+            <h3>About Our Games</h3>
+            <p>
+              All games are educational demonstrations created for learning web
+              development. No real money is involved in any gameplay.
+            </p>
+          </div>
+          <div class="info-section">
+            <h3>Development Status</h3>
+            <p>
+              We're continuously adding new games. Check back regularly for
+              updates and new releases.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link"
+              >User policy</a
+            >
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+            <a href="../about/page.html" class="footer-link">Contacts</a>
+          </nav>
+          <p class="footer-description">
+            Made by Yandex Gophers team for Web Technologies 1 course. This
+            project was created for educational purposes by the student team at
+            Astana IT University.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

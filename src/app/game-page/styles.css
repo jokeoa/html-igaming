@@ -1,9 +1,5 @@
 /* Game Page Specific Styles */
 
-body {
-    background: linear-gradient(180deg, #0b192c 0%, #173763 100%);
-    overflow-x: hidden;
-}
 
 .game-main {
     flex: 1;
