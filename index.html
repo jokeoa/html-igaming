@@ -12,16 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      .main-content {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 40px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-        min-height: calc(100vh - 200px);
-      }
 
       .coins-section {
         width: 400px;
@@ -105,58 +95,276 @@
       body {
         overflow-x: hidden;
       }
+
+      .layout-container {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 250px 1fr;
+        grid-template-areas:
+          "header header"
+          "sidebar main"
+          "footer footer";
+        min-height: 100vh;
+      }
+
+      .header {
+        grid-area: header;
+      }
+
+      .sidebar {
+        grid-area: sidebar;
+      }
+
+      .main-content {
+        grid-area: main;
+      }
+
+      .footer {
+        grid-area: footer;
+      }
+
+      .sidebar {
+        background-color: #0f2a44;
+        padding: 20px;
+      }
+
+      .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-title {
+        font-family: "Geist", sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        color: white;
+        margin: 0 0 10px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sidebar-link {
+        font-family: "Geist", sans-serif;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: block;
+      }
+
+      .sidebar-link:hover {
+        background-color: #1e3e62;
+        color: white;
+      }
+
+
+      .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: calc(100vh - 200px);
+      }
+
+      .games-section {
+        padding: 60px 0;
+        background-color: #0f2a44;
+      }
+
+      .games-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      .games-title {
+        font-family: "Geist", sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+        color: white;
+        text-align: center;
+        margin: 0 0 40px 0;
+      }
+
+      .cards-container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .game-card {
+        background-color: #1e3e62;
+        border-radius: 12px;
+        padding: 24px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #0f2a44;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .game-image {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      .card-title {
+        font-family: "Geist", sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        color: white;
+        margin: 0;
+      }
+
+      .card-text {
+        font-family: "Geist", sans-serif;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.5;
+        margin: 0;
+        flex-grow: 1;
+      }
     </style>
   </head>
   <body>
-    <header class="header">
-      <div class="header-content">
-        <div class="header-left">
-          <div class="logo">
-            <a href="index.html">
-              <img src="public/Logo.svg" alt="HTML casino" class="logo-svg" />
-            </a>
+    <div class="layout-container">
+      <header class="header">
+        <div class="header-content">
+          <div class="header-left">
+            <div class="logo">
+              <a href="index.html">
+                <img src="public/Logo.svg" alt="HTML casino" class="logo-svg" />
+              </a>
+            </div>
+            <nav class="nav-links">
+              <a href="src/app/about/page.html" class="nav-link">About</a>
+              <a href="src/app/faq/page.html" class="nav-link">FAQ</a>
+            </nav>
           </div>
-          <nav class="nav-links">
-            <a href="src/app/about/page.html" class="nav-link">About</a>
-            <a href="src/app/faq/page.html" class="nav-link">FAQ</a>
-          </nav>
+          <div class="header-right">
+            <a
+              href="https://github.com/jokeoa/html-casino"
+              class="btn btn-outline"
+            >
+              <img src="public/GitHub.svg" alt="GitHub" class="github-icon" />
+              GitHub
+            </a>
+            <a href="src/app/catalog/page.html" class="btn btn-gradient"
+              >Play games</a
+            >
+          </div>
         </div>
-        <div class="header-right">
-          <a
-            href="https://github.com/jokeoa/html-casino"
-            class="btn btn-outline"
-          >
-            <img src="public/GitHub.svg" alt="GitHub" class="github-icon" />
-            GitHub
-          </a>
-          <a href="src/app/catalog/page.html" class="btn btn-gradient"
-            >Play games</a
-          >
-        </div>
-      </div>
-    </header>
+      </header>
 
-    <main class="main-content">
-      <div class="coins-section">
-        <div class="coin-container">
-          <div class="coin coin-large"></div>
-          <div class="coin coin-medium"></div>
-          <div class="coin coin-small"></div>
-        </div>
-      </div>
-      <div class="content-section">
-        <h1 class="main-title">Here you will lose all your money!</h1>
-        <p class="subtitle">But we haven't implemented it here yet.</p>
-        <div class="button-group">
-          <a href="src/app/catalog/page.html" class="btn btn-gradient"
-            >Play games</a
-          >
-          <a href="src/app/about/page.html" class="btn btn-outline">About</a>
-        </div>
-      </div>
-    </main>
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Quick Access</h3>
+          <ul class="sidebar-menu">
+            <li><a href="src/app/catalog/page.html" class="sidebar-link">All Games</a></li>
+            <li><a href="src/app/game-page/page.html" class="sidebar-link">Blackjack</a></li>
+            <li><a href="src/app/catalog/page.html" class="sidebar-link">Poker</a></li>
+            <li><a href="src/app/catalog/page.html" class="sidebar-link">Roulette</a></li>
+          </ul>
 
-    <footer class="footer">
+          <h3 class="sidebar-title">Information</h3>
+          <ul class="sidebar-menu">
+            <li><a href="src/app/about/page.html" class="sidebar-link">About Us</a></li>
+            <li><a href="src/app/faq/page.html" class="sidebar-link">FAQ</a></li>
+            <li><a href="src/app/user-policy/page.html" class="sidebar-link">User Policy</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section class="hero-section">
+          <div class="coins-section">
+            <div class="coin-container">
+              <div class="coin coin-large"></div>
+              <div class="coin coin-medium"></div>
+              <div class="coin coin-small"></div>
+            </div>
+          </div>
+          <div class="content-section">
+            <h1 class="main-title">Here you will lose all your money!</h1>
+            <p class="subtitle">But we haven't implemented it here yet.</p>
+            <div class="button-group">
+              <a href="src/app/catalog/page.html" class="btn btn-gradient"
+                >Play games</a
+              >
+              <a href="src/app/about/page.html" class="btn btn-outline">About</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="games-section">
+          <div class="games-container">
+            <h2 class="games-title">Popular Casino Games</h2>
+            <div class="cards-container">
+              <div class="game-card">
+                <div class="card-image">
+                  <img src="public/coins.png" alt="Blackjack game" class="game-image">
+                </div>
+                <h3 class="card-title">Blackjack</h3>
+                <p class="card-text">Classic card game where you aim to get 21. Beat the dealer without going over to win big.</p>
+                <a href="src/app/game-page/page.html" class="btn btn-gradient">Play Now</a>
+              </div>
+
+              <div class="game-card">
+                <div class="card-image">
+                  <img src="public/coins.png" alt="Poker game" class="game-image">
+                </div>
+                <h3 class="card-title">Poker</h3>
+                <p class="card-text">Test your skills in this strategic card game. Bluff, bet, and build the best hand to take the pot.</p>
+                <a href="src/app/catalog/page.html" class="btn btn-gradient">Play Now</a>
+              </div>
+
+              <div class="game-card">
+                <div class="card-image">
+                  <img src="public/coins.png" alt="Roulette game" class="game-image">
+                </div>
+                <h3 class="card-title">Roulette</h3>
+                <p class="card-text">Spin the wheel and place your bets. Will the ball land on your lucky number or color?</p>
+                <a href="src/app/catalog/page.html" class="btn btn-gradient">Play Now</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
       <div class="footer-content">
         <div class="footer-top">
           <div class="footer-logo">
@@ -192,5 +400,6 @@
         </div>
       </div>
     </footer>
+    </div>
   </body>
 </html>
