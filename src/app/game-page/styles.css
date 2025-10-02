@@ -1,10 +1,26 @@
 /* Game Page Specific Styles */
 
+.layout-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
 
-.game-main {
-    flex: 1;
-    min-height: calc(100vh - 200px);
-    padding: 40px 30px;
+.header {
+  grid-area: header;
+}
+
+.main-content {
+  grid-area: main;
+  padding: 40px 30px;
+}
+
+.footer {
+  grid-area: footer;
 }
 
 .game-container {
@@ -162,7 +178,7 @@
         gap: 40px;
     }
 
-    .game-main {
+    .main-content {
         padding: 20px 15px;
     }
 
