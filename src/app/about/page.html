@@ -14,41 +14,62 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="header-content">
-        <div class="header-left">
-          <div class="logo">
-            <a href="../../../index.html">
-              <img
-                src="../../../public/Logo.svg"
-                alt="HTML casino"
-                class="logo-svg"
-              />
-            </a>
+    <div class="layout-container">
+      <header class="header">
+        <div class="header-content">
+          <div class="header-left">
+            <div class="logo">
+              <a href="../../../index.html">
+                <img
+                  src="../../../public/Logo.svg"
+                  alt="HTML casino"
+                  class="logo-svg"
+                />
+              </a>
+            </div>
+            <nav class="nav-links">
+              <a href="../about/page.html" class="nav-link">About</a>
+              <a href="../faq/page.html" class="nav-link">FAQ</a>
+            </nav>
           </div>
-          <nav class="nav-links">
-            <a href="../about/page.html" class="nav-link">About</a>
-            <a href="../faq/page.html" class="nav-link">FAQ</a>
-          </nav>
+          <div class="header-right">
+            <a
+              href="https://github.com/jokeoa/html-casino"
+              class="btn btn-outline"
+            >
+              <img
+                src="../../../public/GitHub.svg"
+                alt="GitHub"
+                class="github-icon"
+              />
+              GitHub
+            </a>
+            <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+          </div>
         </div>
-        <div class="header-right">
-          <a
-            href="https://github.com/jokeoa/html-casino"
-            class="btn btn-outline"
-          >
-            <img
-              src="../../../public/GitHub.svg"
-              alt="GitHub"
-              class="github-icon"
-            />
-            GitHub
-          </a>
-          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
-        </div>
-      </div>
-    </header>
+      </header>
 
-    <div class="container">
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Quick Access</h3>
+          <ul class="sidebar-menu">
+            <li><a href="../catalog/page.html" class="sidebar-link">All Games</a></li>
+            <li><a href="../game-page/page.html" class="sidebar-link">Blackjack</a></li>
+            <li><a href="../catalog/page.html" class="sidebar-link">Poker</a></li>
+            <li><a href="../catalog/page.html" class="sidebar-link">Roulette</a></li>
+          </ul>
+
+          <h3 class="sidebar-title">Information</h3>
+          <ul class="sidebar-menu">
+            <li><a href="../about/page.html" class="sidebar-link">About Us</a></li>
+            <li><a href="../faq/page.html" class="sidebar-link">FAQ</a></li>
+            <li><a href="../user-policy/page.html" class="sidebar-link">User Policy</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="container">
       <h1 class="about-title">About HTML Casino</h1>
       <h2 class="about-subtitle">Educational Gaming Platform</h2>
 
@@ -124,7 +145,77 @@
         >
         <a href="../faq/page.html" class="btn btn-outline">Read FAQ</a>
       </div>
-    </div>
+
+      <section class="gallery-section">
+        <h2 class="gallery-title">Casino Game Gallery</h2>
+        <div class="image-gallery">
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images.jpeg" alt="Casino Game 1" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Blackjack Table</h3>
+              <p>Classic card game setup</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-2.jpeg" alt="Casino Game 2" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Poker Chips</h3>
+              <p>Professional gaming chips</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-3.jpeg" alt="Casino Game 3" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Roulette Wheel</h3>
+              <p>Spinning wheel of fortune</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-4.jpeg" alt="Casino Game 4" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Card Deck</h3>
+              <p>Standard playing cards</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-5.jpeg" alt="Casino Game 5" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Dice Game</h3>
+              <p>Classic dice rolling</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-6.jpeg" alt="Casino Game 6" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Slot Machine</h3>
+              <p>Electronic gaming device</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-7.jpeg" alt="Casino Game 7" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Baccarat Table</h3>
+              <p>Elegant card game</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/images-8.jpeg" alt="Casino Game 8" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Poker Table</h3>
+              <p>Professional poker setup</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="../../../public/black-jack/BlackjackTable.jpg.webp" alt="Casino Game 9" class="gallery-image">
+            <div class="gallery-overlay">
+              <h3>Blackjack Setup</h3>
+              <p>Complete blackjack table</p>
+            </div>
+          </div>
+        </div>
+      </section>
+        </div>
+      </main>
 
     <footer class="footer">
       <div class="footer-content">
@@ -160,5 +251,6 @@
         </div>
       </div>
     </footer>
+    </div>
   </body>
 </html>
