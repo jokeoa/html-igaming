@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="../../globals.css" />
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
     <header class="header">
@@ -53,165 +54,159 @@
       <h2 class="policy-subtitle">Frequently Asked Questions</h2>
 
       <div class="policy-content">
-        <p
-          style="
-            text-align: center;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.7);
-          "
-        >
+        <p class="text-center mb-4" style="color: rgba(255, 255, 255, 0.7);">
           Click on any question to reveal the answer
         </p>
 
-        <div class="faq-item">
-          <input type="checkbox" id="faq1" class="faq-toggle">
-          <label for="faq1" class="faq-question">
-            <span>What is HTML Casino?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              HTML Casino is an educational demonstration platform developed by
-              students at Astana IT University. It serves as a learning tool for
-              web development technologies and does not involve real gambling or
-              monetary transactions.
-            </p>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What is HTML Casino?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                HTML Casino is an educational demonstration platform developed by
+                students at Astana IT University. It serves as a learning tool for
+                web development technologies and does not involve real gambling or
+                monetary transactions.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Is this real gambling?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                No, HTML Casino is purely educational and does not involve real
+                money, actual gambling, or any monetary transactions. All games
+                are demonstration versions created for learning purposes only.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Who can access the platform?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The platform is designed for educational use by students,
+                developers, and anyone interested in learning about web
+                technologies. Access is recommended for users 18+ to maintain
+                consistency with gambling-related content standards.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                What technologies are used?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The platform currently utilizes fundamental web technologies
+                including HTML, CSS, and JavaScript. The project demonstrates
+                modern front-end development practices and responsive design
+                principles.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Can I contribute to the project?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! We welcome constructive feedback, bug reports, and
+                suggestions for improvement. You can contribute through the
+                official project repository or designated academic channels at
+                Astana IT University.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                Is the platform always available?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                As a student development project, the platform may experience
+                occasional downtime or technical limitations. We endeavor to
+                maintain functionality during active development periods but
+                cannot guarantee continuous operation.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                How do I report technical issues?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Technical issues should be reported through the established
+                feedback mechanisms in the project repository or through
+                designated academic channels. Please do not attempt unauthorized
+                access or modification of platform features.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                Will new features be added?
+              </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, the platform is under active development. New features and
+                improvements are regularly added as part of the ongoing
+                educational project. Updates will be communicated through
+                appropriate channels.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                Is my data collected?
+              </button>
+            </h2>
+            <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The platform operates with minimal data collection practices. User
+                interactions are logged solely for technical functionality and
+                educational assessment. No personal financial information is
+                collected or stored.
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="faq-item">
-          <input type="checkbox" id="faq2" class="faq-toggle">
-          <label for="faq2" class="faq-question">
-            <span>Is this real gambling?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              No, HTML Casino is purely educational and does not involve real
-              money, actual gambling, or any monetary transactions. All games
-              are demonstration versions created for learning purposes only.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq3" class="faq-toggle">
-          <label for="faq3" class="faq-question">
-            <span>Who can access the platform?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              The platform is designed for educational use by students,
-              developers, and anyone interested in learning about web
-              technologies. Access is recommended for users 18+ to maintain
-              consistency with gambling-related content standards.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq4" class="faq-toggle">
-          <label for="faq4" class="faq-question">
-            <span>What technologies are used?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              The platform currently utilizes fundamental web technologies
-              including HTML, CSS, and JavaScript. The project demonstrates
-              modern front-end development practices and responsive design
-              principles.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq5" class="faq-toggle">
-          <label for="faq5" class="faq-question">
-            <span>Can I contribute to the project?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              Yes! We welcome constructive feedback, bug reports, and
-              suggestions for improvement. You can contribute through the
-              official project repository or designated academic channels at
-              Astana IT University.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq6" class="faq-toggle">
-          <label for="faq6" class="faq-question">
-            <span>Is the platform always available?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              As a student development project, the platform may experience
-              occasional downtime or technical limitations. We endeavor to
-              maintain functionality during active development periods but
-              cannot guarantee continuous operation.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq7" class="faq-toggle">
-          <label for="faq7" class="faq-question">
-            <span>How do I report technical issues?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              Technical issues should be reported through the established
-              feedback mechanisms in the project repository or through
-              designated academic channels. Please do not attempt unauthorized
-              access or modification of platform features.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq8" class="faq-toggle">
-          <label for="faq8" class="faq-question">
-            <span>Will new features be added?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              Yes, the platform is under active development. New features and
-              improvements are regularly added as part of the ongoing
-              educational project. Updates will be communicated through
-              appropriate channels.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <input type="checkbox" id="faq9" class="faq-toggle">
-          <label for="faq9" class="faq-question">
-            <span>Is my data collected?</span>
-            <span class="faq-icon"></span>
-          </label>
-          <div class="faq-answer">
-            <p>
-              The platform operates with minimal data collection practices. User
-              interactions are logged solely for technical functionality and
-              educational assessment. No personal financial information is
-              collected or stored.
-            </p>
-          </div>
-        </div>
-
-        <div class="disclaimer" style="margin-top: 30px">
-          <p>
-            <strong>Still have questions?</strong> Contact the development team
-            through the official project repository or designated academic
-            channels at Astana IT University.
-          </p>
+        <div class="alert alert-info mt-4">
+          <strong>Still have questions?</strong> Contact the development team
+          through the official project repository or designated academic
+          channels at Astana IT University.
         </div>
       </div>
     </div>
@@ -250,6 +245,6 @@
         </div>
       </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
