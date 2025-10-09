@@ -258,6 +258,26 @@
         margin: 0;
         flex-grow: 1;
       }
+
+      .newsletter-section {
+        padding: 60px 0;
+        background: linear-gradient(180deg, #0b192c 0%, #173763 100%);
+      }
+
+      .newsletter-title {
+        font-family: "Geist", sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+        color: white;
+        margin: 0 0 16px 0;
+      }
+
+      .newsletter-subtitle {
+        font-family: "Geist", sans-serif;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0 0 32px 0;
+      }
     </style>
   </head>
   <body>
@@ -369,6 +389,25 @@
                     <a href="src/app/catalog/page.html" class="btn btn-gradient">Play Now</a>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="newsletter-section">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-8 text-center">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-subtitle">Subscribe to receive updates about new games and features</p>
+                <form class="row g-3 justify-content-center">
+                  <div class="col-auto" style="flex: 1; max-width: 400px;">
+                    <input type="email" class="form-control newsletter-input" placeholder="Enter your email" required>
+                  </div>
+                  <div class="col-auto">
+                    <button type="submit" class="btn btn-gradient">Subscribe</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
