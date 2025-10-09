@@ -236,3 +236,121 @@ body {
     color: white;
     line-height: 1.4;
 }
+
+/* Bootstrap Card Overrides */
+.card {
+    background-color: #1e3e62 !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-body {
+    color: white !important;
+}
+
+.card-title {
+    font-family: 'Geist', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 24px !important;
+    color: white !important;
+}
+
+.card-text {
+    font-family: 'Geist', sans-serif !important;
+    font-size: 16px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.5 !important;
+}
+
+.card-img-top {
+    border-radius: 12px 12px 0 0 !important;
+    object-fit: cover !important;
+}
+
+/* Bootstrap Accordion Overrides */
+.accordion-item {
+    background-color: #1e3e62 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+}
+
+.accordion-button {
+    background-color: #1e3e62 !important;
+    color: white !important;
+    font-family: 'Geist', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    border: none !important;
+    border-radius: 8px !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0f2a44 !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.accordion-button::after {
+    filter: brightness(0) invert(1) !important;
+}
+
+.accordion-body {
+    background-color: #0f2a44 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-family: 'Geist', sans-serif !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* Bootstrap Alert Overrides */
+.alert-info {
+    background-color: #1e3e62 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 8px !important;
+}
+
+/* Bootstrap Badge Overrides */
+.badge {
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 500 !important;
+    padding: 6px 12px !important;
+}
+
+/* Bootstrap Carousel Overrides */
+.carousel {
+    border-radius: 12px !important;
+}
+
+.carousel-inner {
+    border-radius: 12px !important;
+}
+
+.carousel-item img {
+    border-radius: 12px !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0) invert(1) !important;
+}
+
+.carousel-indicators button {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.carousel-indicators button.active {
+    background-color: white !important;
+}
