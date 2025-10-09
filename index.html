@@ -350,59 +350,60 @@
           </div>
         </section>
 
-        <section class="games-section">
+        <section class="games-section" aria-labelledby="games-heading">
           <div class="games-container">
-            <h2 class="games-title">Popular Casino Games</h2>
+            <h2 id="games-heading" class="games-title">Popular Casino Games</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
-                <div class="card h-100">
+                <article class="card h-100">
                   <div class="card-body d-flex flex-column">
                     <div class="text-center mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                      <img src="public/coins.png" alt="Blackjack game" style="width: 80px; height: 80px; object-fit: contain;">
+                      <img src="public/coins.png" alt="Blackjack game icon" style="width: 80px; height: 80px; object-fit: contain;">
                     </div>
-                    <h5 class="card-title">Blackjack</h5>
+                    <h3 class="card-title">Blackjack</h3>
                     <p class="card-text flex-grow-1">Classic card game where you aim to get 21. Beat the dealer without going over to win big.</p>
-                    <a href="src/app/game-page/page.html" class="btn btn-gradient">Play Now</a>
+                    <a href="src/app/game-page/page.html" class="btn btn-gradient" role="button">Play Now</a>
                   </div>
-                </div>
+                </article>
               </div>
               <div class="col">
-                <div class="card h-100">
+                <article class="card h-100">
                   <div class="card-body d-flex flex-column">
                     <div class="text-center mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                      <img src="public/coins.png" alt="Poker game" style="width: 80px; height: 80px; object-fit: contain;">
+                      <img src="public/coins.png" alt="Poker game icon" style="width: 80px; height: 80px; object-fit: contain;">
                     </div>
-                    <h5 class="card-title">Poker</h5>
+                    <h3 class="card-title">Poker</h3>
                     <p class="card-text flex-grow-1">Test your skills in this strategic card game. Bluff, bet, and build the best hand to take the pot.</p>
-                    <a href="src/app/catalog/page.html" class="btn btn-gradient">Play Now</a>
+                    <a href="src/app/catalog/page.html" class="btn btn-gradient" role="button">Play Now</a>
                   </div>
-                </div>
+                </article>
               </div>
               <div class="col">
-                <div class="card h-100">
+                <article class="card h-100">
                   <div class="card-body d-flex flex-column">
                     <div class="text-center mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                      <img src="public/coins.png" alt="Roulette game" style="width: 80px; height: 80px; object-fit: contain;">
+                      <img src="public/coins.png" alt="Roulette game icon" style="width: 80px; height: 80px; object-fit: contain;">
                     </div>
-                    <h5 class="card-title">Roulette</h5>
+                    <h3 class="card-title">Roulette</h3>
                     <p class="card-text flex-grow-1">Spin the wheel and place your bets. Will the ball land on your lucky number or color?</p>
-                    <a href="src/app/catalog/page.html" class="btn btn-gradient">Play Now</a>
+                    <a href="src/app/catalog/page.html" class="btn btn-gradient" role="button">Play Now</a>
                   </div>
-                </div>
+                </article>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="newsletter-section">
+        <section class="newsletter-section" aria-labelledby="newsletter-heading">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-6 col-md-8 text-center">
-                <h2 class="newsletter-title">Stay Updated</h2>
+                <h2 id="newsletter-heading" class="newsletter-title">Stay Updated</h2>
                 <p class="newsletter-subtitle">Subscribe to receive updates about new games and features</p>
-                <form class="row g-3 justify-content-center">
+                <form class="row g-3 justify-content-center" aria-label="Newsletter subscription form">
                   <div class="col-auto" style="flex: 1; max-width: 400px;">
-                    <input type="email" class="form-control newsletter-input" placeholder="Enter your email" required>
+                    <label for="email-input" class="visually-hidden">Email address</label>
+                    <input type="email" id="email-input" class="form-control newsletter-input" placeholder="Enter your email" required aria-required="true">
                   </div>
                   <div class="col-auto">
                     <button type="submit" class="btn btn-gradient">Subscribe</button>

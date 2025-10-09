@@ -329,6 +329,21 @@ body {
     padding: 6px 12px !important;
 }
 
+.badge.bg-success {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.badge.bg-secondary {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
 /* Bootstrap Carousel Overrides */
 .carousel {
     border-radius: 12px !important;
