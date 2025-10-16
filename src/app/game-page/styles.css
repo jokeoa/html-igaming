@@ -52,10 +52,6 @@
 }
 
 .game-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
 }
 
 .game-image-section {
@@ -191,8 +187,6 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .game-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 
     .main-content {

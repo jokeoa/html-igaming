@@ -17,6 +17,81 @@ body {
     margin: 0;
 }
 
+/* Layout grid to support left sidebar (opt-in) */
+.layout-with-sidebar {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    min-height: 100vh;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main-content { grid-area: main; }
+.footer { grid-area: footer; }
+
+/* Sidebar styles matching homepage */
+.sidebar {
+    background-color: #0f2a44;
+    padding: 20px;
+}
+
+/* Responsive: collapse sidebar layout on smaller screens */
+/* @media (max-width: 992px) {
+    .layout-with-sidebar {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+    }
+} */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-title {
+    font-family: 'Geist', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    margin: 0 0 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-link {
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+}
+
+.sidebar-link:hover {
+    background-color: #1e3e62;
+    color: white;
+}
+
 /* Button Styles */
 .btn {
     display: flex;
@@ -69,8 +144,26 @@ body {
 /* Header Styles */
 .header {
     background-color: #1e3e62;
-    padding: 15px 30px;
+    padding: 0;
     width: 100%;
+}
+
+/* Bootstrap Navbar custom theme matching site header */
+.custom-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+.custom-header .navbar-brand,
+.custom-header .nav-link,
+.custom-header .navbar-text {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.custom-header .nav-link.active,
+.custom-header .nav-link:hover,
+.custom-header .navbar-brand:hover {
+    color: #ffffff !important;
 }
 
 .header-content {

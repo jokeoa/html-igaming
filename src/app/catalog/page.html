@@ -1,171 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Catalog - HTML Casino</title>
-    <link rel="stylesheet" href="../../globals.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-content">
-        <div class="header-left">
-          <div class="logo">
-            <a href="../../../index.html">
-              <img
-                src="../../../public/Logo.svg"
-                alt="HTML casino"
-                class="logo-svg"
-              />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Catalog - HTML Casino</title>
+  <link rel="stylesheet" href="../../globals.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* TASK 4: THEME VARIABLES */
+    body.theme-blue {
+      --bg-primary: #052c65;
+      --bg-secondary: #1e3e62;
+      --bg-tertiary: #0f2a44;
+      --bg-header: #1a2332;
+      --bg-gradient-start: #0b192c;
+      --bg-gradient-end: #173763;
+      --accent-color: #ff6b35;
+    }
+
+    body.theme-purple {
+      --bg-primary: #2d1b4e;
+      --bg-secondary: #3d2c5a;
+      --bg-tertiary: #2b1a4a;
+      --bg-header: #1f1535;
+      --bg-gradient-start: #1a0b2e;
+      --bg-gradient-end: #4a2b7c;
+      --accent-color: #b794f6;
+    }
+
+    body.theme-green {
+      --bg-primary: #0d3b2f;
+      --bg-secondary: #1e4d3f;
+      --bg-tertiary: #15352c;
+      --bg-header: #0a2820;
+      --bg-gradient-start: #0d1f1a;
+      --bg-gradient-end: #2a6351;
+      --accent-color: #4ade80;
+    }
+
+    body.theme-red {
+      --bg-primary: #3d1414;
+      --bg-secondary: #4d1e1e;
+      --bg-tertiary: #351515;
+      --bg-header: #2a0f0f;
+      --bg-gradient-start: #1f0d0d;
+      --bg-gradient-end: #632a2a;
+      --accent-color: #f87171;
+    }
+
+    /* Default Theme */
+    body {
+      --bg-primary: #052c65;
+      --bg-secondary: #1e3e62;
+      --bg-tertiary: #0f2a44;
+      --bg-header: #1a2332;
+      --bg-gradient-start: #0b192c;
+      --bg-gradient-end: #173763;
+      --accent-color: #ff6b35;
+      
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      transition: background 0.5s ease;
+      min-height: 100vh;
+    }
+
+    /* Header styling with theme support */
+    .header {
+      background: var(--bg-header);
+      transition: background-color 0.5s ease;
+    }
+
+    .custom-header,
+    .navbar {
+      background: var(--bg-secondary) !important;
+      transition: background-color 0.5s ease;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.7) !important;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-color) !important;
+    }
+
+    /* Card styling with theme support */
+    .card {
+      background: var(--bg-header);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent-color);
+    }
+
+    .card-body {
+      background: var(--bg-secondary);
+      transition: background-color 0.5s ease;
+    }
+
+    .card-title {
+      color: #ffffff;
+    }
+
+    .card-text {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Footer styling with theme support */
+    .footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background-color 0.5s ease;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--accent-color);
+    }
+
+    .footer-description {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Catalog specific styles */
+    .catalog-title {
+      color: var(--accent-color);
+      transition: color 0.5s ease;
+    }
+
+    .catalog-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Button styles */
+    .btn-gradient {
+      background: linear-gradient(to right, #ff6500, #ff8434);
+      filter: brightness(1.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    }
+
+    /* TASK 4: THEME SWITCHER BUTTON */
+    .theme-switcher {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .theme-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.1) rotate(180deg);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .theme-switcher {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .theme-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="theme-blue">
+  <header class="header">
+    <nav class="navbar navbar-expand-lg custom-header py-2">
+      <div class="container-fluid px-2 px-lg-3">
+        <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+          <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="../about/page.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="../faq/page.html">FAQ</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+              <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+              GitHub
             </a>
+            <a href="../catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
           </div>
-          <nav class="nav-links">
-            <a href="../about/page.html" class="nav-link">About</a>
-            <a href="../faq/page.html" class="nav-link">FAQ</a>
-          </nav>
         </div>
-        <div class="header-right">
-          <a
-            href="https://github.com/jokeoa/html-casino"
-            class="btn btn-outline"
-          >
-            <img
-              src="../../../public/GitHub.svg"
-              alt="GitHub"
-              class="github-icon"
-            />
-            GitHub
+      </div>
+    </nav>
+  </header>
+
+  <main class="catalog-main">
+    <div class="catalog-container container py-4 py-lg-5">
+      <div class="catalog-header">
+        <h1 class="catalog-title">Game Catalog</h1>
+        <p class="catalog-subtitle">
+          Choose from our collection of classic casino games
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+        <div class="col">
+          <article class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Spade card symbol">♠️</div>
+              <h3 class="card-title">Blackjack</h3>
+              <p class="card-text flex-grow-1">Classic card game where you aim to get 21</p>
+              <div class="mb-3">
+                <span class="badge bg-success me-2">Easy</span>
+                <span class="badge bg-secondary">1 Player</span>
+              </div>
+              <a href="../game-page/page.html" class="btn btn-gradient" role="button">Play Now</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Heart card symbol">♥️</div>
+              <h3 class="card-title">Poker</h3>
+              <p class="card-text flex-grow-1">Texas Hold'em poker game</p>
+              <div class="mb-3">
+                <span class="badge bg-warning me-2">Medium</span>
+                <span class="badge bg-secondary">2-8 Players</span>
+              </div>
+              <button class="btn btn-secondary" disabled aria-disabled="true">Coming Soon</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Target symbol">🎯</div>
+              <h3 class="card-title">Roulette</h3>
+              <p class="card-text flex-grow-1">Classic casino roulette wheel</p>
+              <div class="mb-3">
+                <span class="badge bg-success me-2">Easy</span>
+                <span class="badge bg-secondary">1+ Players</span>
+              </div>
+              <button class="btn btn-secondary" disabled aria-disabled="true">Coming Soon</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <article class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title">About Our Games</h3>
+              <p class="card-text">
+                All games are educational demonstrations created for learning web
+                development. No real money is involved in any gameplay.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title">Development Status</h3>
+              <p class="card-text">
+                We're continuously adding new games. Check back regularly for
+                updates and new releases.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <a href="../../../index.html">
+            <img src="../../../public/Logo.svg" alt="HTML casino" class="footer-logo-svg" />
           </a>
-          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
         </div>
+        <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
       </div>
-    </header>
-
-    <main class="catalog-main">
-      <div class="catalog-container">
-        <div class="catalog-header">
-          <h1 class="catalog-title">Game Catalog</h1>
-          <p class="catalog-subtitle">
-            Choose from our collection of classic casino games
-          </p>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-          <div class="col">
-            <article class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Spade card symbol">♠️</div>
-                <h3 class="card-title">Blackjack</h3>
-                <p class="card-text flex-grow-1">Classic card game where you aim to get 21</p>
-                <div class="mb-3">
-                  <span class="badge bg-success me-2">Easy</span>
-                  <span class="badge bg-secondary">1 Player</span>
-                </div>
-                <a href="../game-page/page.html" class="btn btn-gradient" role="button">Play Now</a>
-              </div>
-            </article>
-          </div>
-
-          <div class="col">
-            <article class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Heart card symbol">♥️</div>
-                <h3 class="card-title">Poker</h3>
-                <p class="card-text flex-grow-1">Texas Hold'em poker game</p>
-                <div class="mb-3">
-                  <span class="badge bg-warning me-2">Medium</span>
-                  <span class="badge bg-secondary">2-8 Players</span>
-                </div>
-                <button class="btn btn-secondary" disabled aria-disabled="true">Coming Soon</button>
-              </div>
-            </article>
-          </div>
-
-          <div class="col">
-            <article class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="text-center mb-3" style="font-size: 48px;" role="img" aria-label="Target symbol">🎯</div>
-                <h3 class="card-title">Roulette</h3>
-                <p class="card-text flex-grow-1">Classic casino roulette wheel</p>
-                <div class="mb-3">
-                  <span class="badge bg-success me-2">Easy</span>
-                  <span class="badge bg-secondary">1+ Players</span>
-                </div>
-                <button class="btn btn-secondary" disabled aria-disabled="true">Coming Soon</button>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <div class="col">
-            <article class="card h-100">
-              <div class="card-body">
-                <h3 class="card-title">About Our Games</h3>
-                <p class="card-text">
-                  All games are educational demonstrations created for learning web
-                  development. No real money is involved in any gameplay.
-                </p>
-              </div>
-            </article>
-          </div>
-          <div class="col">
-            <article class="card h-100">
-              <div class="card-body">
-                <h3 class="card-title">Development Status</h3>
-                <p class="card-text">
-                  We're continuously adding new games. Check back regularly for
-                  updates and new releases.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
+      <div class="footer-bottom">
+        <nav class="footer-links">
+          <a href="../../../index.html" class="footer-link">Main</a>
+          <a href="../about/page.html" class="footer-link">About</a>
+          <a href="../user-policy/page.html" class="footer-link">User policy</a>
+          <a href="../faq/page.html" class="footer-link">FAQ</a>
+          <a href="../catalog/page.html" class="footer-link">Games</a>
+          <a href="../sitemap/page.html" class="footer-link">Site map</a>
+        </nav>
+        <p class="footer-description">
+          Made by Yandex Gophers team: Madiyar Sarbayev, Vladislav Kutsenko,
+          Amir Alenov, and Bekdaulet Bolatov for Web Technologies 1 course.
+          This project was created for educational purposes by the student
+          team at Astana IT University.
+        </p>
       </div>
-    </main>
+    </div>
+  </footer>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-top">
-          <div class="footer-logo">
-            <a href="../../../index.html">
-              <img
-                src="../../../public/Logo.svg"
-                alt="HTML casino"
-                class="footer-logo-svg"
-              />
-            </a>
-          </div>
-          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
-        </div>
-        <div class="footer-bottom">
-          <nav class="footer-links">
-            <a href="../../../index.html" class="footer-link">Main</a>
-            <a href="../about/page.html" class="footer-link">About</a>
-            <a href="../user-policy/page.html" class="footer-link"
-              >User policy</a
-            >
-            <a href="../faq/page.html" class="footer-link">FAQ</a>
-            <a href="../catalog/page.html" class="footer-link">Games</a>
-            <a href="../sitemap/page.html" class="footer-link">Site map</a>
-          </nav>
-          <p class="footer-description">
-            Made by Yandex Gophers team: Madiyar Sarbayev, Vladislav Kutsenko,
-            Amir Alenov, and Bekdaulet Bolatov for Web Technologies 1 course.
-            This project was created for educational purposes by the student
-            team at Astana IT University.
-          </p>
-        </div>
-      </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- TASK 4: THEME SWITCHER BUTTON -->
+  <div class="theme-switcher">
+    <button class="theme-btn" onclick="changeTheme()" title="Change Theme">
+      🎨
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // TASK 4: BACKGROUND COLOR CHANGER
+    const themes = ['theme-blue', 'theme-purple', 'theme-green', 'theme-red'];
+    let currentThemeIndex = 0;
+
+    function changeTheme() {
+      const body = document.body;
+      
+      // Remove current theme
+      body.classList.remove(themes[currentThemeIndex]);
+      
+      // Move to next theme
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      
+      // Add new theme
+      body.classList.add(themes[currentThemeIndex]);
+      
+      // Log theme change for testing
+      console.log('Theme changed to:', themes[currentThemeIndex]);
+    }
+
+    // Set initial theme on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('theme-blue');
+    });
+  </script>
+</body>
 </html>
