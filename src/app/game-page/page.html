@@ -17,48 +17,40 @@
   <body>
     <div class="layout-container">
       <header class="header">
-        <div class="header-content">
-          <div class="header-left">
-            <div class="logo">
-              <a href="../../../index.html">
-                <img
-                  src="../../../public/Logo.svg"
-                  alt="HTML casino"
-                  class="logo-svg"
-                />
-              </a>
-            </div>
-            <nav class="nav-links">
-              <a href="../about/page.html" class="nav-link">About</a>
-              <a href="../faq/page.html" class="nav-link">FAQ</a>
-            </nav>
-          </div>
-          <div class="header-right">
-            <a
-              href="https://github.com/jokeoa/html-casino"
-              class="btn btn-outline"
-            >
-              <img
-                src="../../../public/GitHub.svg"
-                alt="GitHub"
-                class="github-icon"
-              />
-              GitHub
+        <nav class="navbar navbar-expand-lg custom-header py-2">
+          <div class="container-fluid px-2 px-lg-3">
+            <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+              <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
             </a>
-            <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+                <li class="nav-item"><a class="nav-link" href="../about/page.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../faq/page.html">FAQ</a></li>
+              </ul>
+              <div class="d-flex align-items-center gap-2">
+                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                  <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+                  GitHub
+                </a>
+                <a href="../catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
+              </div>
+            </div>
           </div>
-        </div>
+        </nav>
       </header>
 
       <main class="main-content">
-      <div class="game-container">
+      <div class="game-container container py-4 py-lg-5">
         <div class="game-header">
           <h1 class="game-title">Blackjack</h1>
           <p class="game-subtitle">Classic card game where you aim to get 21</p>
         </div>
 
-        <div class="game-content">
-          <div class="game-image-section">
+        <div class="game-content row g-4 align-items-start">
+          <div class="game-image-section col-12 col-lg-6 order-1 order-lg-1">
             <div class="gallery-container">
               <h3 class="gallery-title">Game Gallery</h3>
               <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -118,7 +110,7 @@
             </div>
           </div>
 
-          <div class="game-info-section">
+          <div class="game-info-section col-12 col-lg-6 order-2 order-lg-2">
             <div class="row row-cols-1 row-cols-md-2 g-4">
               <div class="col">
                 <article class="card h-100">
