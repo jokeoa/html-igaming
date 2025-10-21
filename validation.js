@@ -150,3 +150,95 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Date-Time
+
+
+// Date-Time Floating Card (global, inside validation.js)
+(function() {
+  const TZ = 'Asia/Almaty';
+  const DEFAULT_24H = true;
+
+  function qs(id) { return document.getElementById(id); }
+
+  function initDateTimeCard() {
+    const elTime = qs('dt-f-time');
+    const elDate = qs('dt-f-date');
+    const btnToggle = qs('dt-f-toggle');
+    const card = qs('dt-floating-card');
+
+    // Если на странице нет HTML-карточки — тихо выходим
+    if (!elTime || !elDate || !btnToggle || !card) return;
+
+    // Предпочтение 12/24 в localStorage (общая настройка для всех страниц)
+    function getIs24() {
+      try {
+        const v = localStorage.getItem('dt_is24h');
+        return v === null ? DEFAULT_24H : v === 'true';
+      } catch (_) { return DEFAULT_24H; }
+    }
+    function setIs24(v) {
+      try { localStorage.setItem('dt_is24h', String(v)); } catch (_) {}
+    }
+
+    let is24 = getIs24();
+
+    function fmtTime(date) {
+      return new Intl.DateTimeFormat(undefined, {
+        timeZone: TZ,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: !is24
+      }).format(date);
+    }
+
+    function fmtDate(date) {
+      return new Intl.DateTimeFormat('ru-RU', {
+        timeZone: TZ,
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'short'
+      }).format(date);
+    }
+
+    function render() {
+      const now = new Date();
+      elTime.textContent = fmtTime(now);
+      elDate.textContent = fmtDate(now);
+      btnToggle.textContent = is24 ? '12/24' : '24/12';
+      btnToggle.setAttribute('aria-label', is24 ? 'Переключить на 12-часовой' : 'Переключить на 24-часовой');
+    }
+
+    // Ровный тикер по секундам
+    let intervalId;
+    function startTicker() {
+      const delay = 1000 - (Date.now() % 1000);
+      setTimeout(() => {
+        render();
+        intervalId = setInterval(render, 1000);
+      }, delay);
+    }
+
+    btnToggle.addEventListener('click', () => {
+      is24 = !is24;
+      setIs24(is24);
+      render();
+    });
+
+    render();
+    startTicker();
+
+    // Очистка
+    window.addEventListener('beforeunload', () => {
+      if (intervalId) clearInterval(intervalId);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDateTimeCard);
+  } else {
+    initDateTimeCard();
+  }
+})();

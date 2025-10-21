@@ -627,10 +627,82 @@
           font-size: 14px;
         }
       }
+
+/* Date-Time */
+/* Floating Date-Time Card (left-bottom) */
+.dt-card {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  background-color: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  width: 220px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.dt-card:hover { transform: translateY(-2px); }
+
+.dt-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.dt-row:last-child { margin-bottom: 0; }
+
+.dt-time { color: #fff; font-weight: 700; font-size: 18px; letter-spacing: 0.4px; }
+.dt-date { color: rgba(255, 255, 255, 0.85); font-size: 13px; }
+
+.dt-controls .btn { font-size: 12px; line-height: 1; padding: 4px 8px; }
+
+/* Accessibility focus */
+.dt-card:focus-within {
+  outline: 2px solid rgba(102, 126, 234, 0.6); 
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .dt-card { left: 16px; bottom: 20px; width: 210px; padding: 9px 10px; }
+  .dt-time { font-size: 17px; }
+  .dt-date { font-size: 12.5px; }
+}
+@media (max-width: 768px) {
+  .dt-card { left: 16px; bottom: 20px; width: 200px; padding: 8px 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+  .dt-time { font-size: 16px; }
+  .dt-date { font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .dt-card { left: 12px; bottom: 16px; width: 190px; padding: 7px 9px; border-radius: 10px; }
+  .dt-time { font-size: 15px; }
+  .dt-date { font-size: 11.5px; }
+}
+
+/* Smooth theme transitions */
+body.theme-blue .dt-card,
+body.theme-purple .dt-card,
+body.theme-green .dt-card,
+body.theme-red .dt-card {
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
     </style>
+
+
+
   </head>
   <body class="theme-blue">
     <header>
+      <div id="dt-floating-card" class="dt-card">
+  <div class="dt-row">
+    <span class="dt-time" id="dt-f-time">--:--:--</span>
+  </div>
+  <div class="dt-row">
+    <span class="dt-date" id="dt-f-date">---- -- ----</span>
+  </div>
+  <div class="dt-row dt-controls">
+    <button id="dt-f-toggle" class="btn btn-outline btn-sm px-2 py-1">12/24</button>
+  </div>
+</div>
       <nav class="navbar navbar-expand-lg custom-header py-2">
         <div class="container-fluid px-2 px-lg-3">
           <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -658,6 +730,9 @@
         </div>
       </nav>
     </header>
+
+
+
 
     <div class="content-wrapper">
       <aside class="sidebar d-none d-lg-block">
@@ -938,5 +1013,96 @@
       // Load theme on page load
       window.addEventListener('load', loadThemePreference);
     </script>
+<script>
+  // Date-Time Floating Card (global, inside validation.js)
+(function() {
+  const TZ = 'Asia/Almaty';
+  const DEFAULT_24H = true;
+
+  function qs(id) { return document.getElementById(id); }
+
+  function initDateTimeCard() {
+    const elTime = qs('dt-f-time');
+    const elDate = qs('dt-f-date');
+    const btnToggle = qs('dt-f-toggle');
+    const card = qs('dt-floating-card');
+
+    // Если на странице нет HTML-карточки — тихо выходим
+    if (!elTime || !elDate || !btnToggle || !card) return;
+
+    // Предпочтение 12/24 в localStorage (общая настройка для всех страниц)
+    function getIs24() {
+      try {
+        const v = localStorage.getItem('dt_is24h');
+        return v === null ? DEFAULT_24H : v === 'true';
+      } catch (_) { return DEFAULT_24H; }
+    }
+    function setIs24(v) {
+      try { localStorage.setItem('dt_is24h', String(v)); } catch (_) {}
+    }
+
+    let is24 = getIs24();
+
+    function fmtTime(date) {
+      return new Intl.DateTimeFormat(undefined, {
+        timeZone: TZ,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: !is24
+      }).format(date);
+    }
+
+    function fmtDate(date) {
+      return new Intl.DateTimeFormat('ru-RU', {
+        timeZone: TZ,
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'short'
+      }).format(date);
+    }
+
+    function render() {
+      const now = new Date();
+      elTime.textContent = fmtTime(now);
+      elDate.textContent = fmtDate(now);
+      btnToggle.textContent = is24 ? '12/24' : '24/12';
+      btnToggle.setAttribute('aria-label', is24 ? 'Переключить на 12-часовой' : 'Переключить на 24-часовой');
+    }
+
+    // Ровный тикер по секундам
+    let intervalId;
+    function startTicker() {
+      const delay = 1000 - (Date.now() % 1000);
+      setTimeout(() => {
+        render();
+        intervalId = setInterval(render, 1000);
+      }, delay);
+    }
+
+    btnToggle.addEventListener('click', () => {
+      is24 = !is24;
+      setIs24(is24);
+      render();
+    });
+
+    render();
+    startTicker();
+
+    // Очистка
+    window.addEventListener('beforeunload', () => {
+      if (intervalId) clearInterval(intervalId);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDateTimeCard);
+  } else {
+    initDateTimeCard();
+  }
+})();
+
+</script>
   </body>
 </html>
