@@ -1,0 +1,228 @@
+/* Game Page Specific Styles */
+
+.layout-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main-content {
+  grid-area: main;
+  padding: 40px 30px;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-title {
+    font-family: 'Geist', sans-serif;
+    font-weight: bold;
+    font-size: clamp(36px, 5vw, 60px);
+    color: white;
+    margin: 0 0 16px 0;
+}
+
+.game-subtitle {
+    font-family: 'Geist Mono', monospace;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.game-content {
+}
+
+.game-image-section {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.gallery-title {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: white;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.game-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.game-description h2 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: white;
+    margin: 0 0 16px 0;
+}
+
+.game-description h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
+    margin: 24px 0 12px 0;
+}
+
+.game-description p {
+    font-family: 'Geist', sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.game-description ul {
+    font-family: 'Geist', sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    padding-left: 20px;
+}
+
+.game-description li {
+    margin-bottom: 8px;
+}
+
+.game-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.stat-value {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+}
+
+.game-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.play-button {
+    padding: 12px 32px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-content {
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .game-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .game-actions .btn {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        gap: 30px;
+    }
+
+    .game-header {
+        margin-bottom: 10px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+    }
+
+    .game-stats {
+        padding: 16px;
+    }
+}
