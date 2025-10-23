@@ -177,7 +177,7 @@ class RouletteGame {
             console.log('Audio error:', e);
         }
     }
-}
+}git
 
 document.addEventListener('DOMContentLoaded', () => {
     new RouletteGame();
