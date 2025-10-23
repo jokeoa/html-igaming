@@ -3,10 +3,6 @@ class User {
         if (User.instance) {
             return User.instance;
         }
-        this.balance = parseFloat(this.getCookie('rouletteBalance')) || 1000;
-        this.totalWagered = 0;
-        this.wins = 0;
-        this.losses = 0;
         User.instance = this;
     }
     addBet(amount) {
@@ -35,10 +31,15 @@ class User {
         const saved = localStorage.getItem('rouletteUser');
         if (saved) {
             const data = JSON.parse(saved);
-            this.balance = data.balance || 1000;
+            this.balance = data.balance || 0;
             this.totalWagered = data.totalWagered || 0;
             this.wins = data.wins || 0;
             this.losses = data.losses || 0;
+        } else {
+            this.balance = 0;
+            this.totalWagered = 0;
+            this.wins = 0;
+            this.losses = 0;
         }
     }
     setCookie(name, value, days) {
@@ -59,7 +60,6 @@ class RouletteGame {
         this.user.load();
         this.currentChip = 10;
         this.bets = [];
-        this.history = [];
         this.numbers = Array.from({length: 37}, (_, i) => i);
         this.isSpinning = false;
         this.wheelCanvas = null;
@@ -67,14 +67,12 @@ class RouletteGame {
         this.init();
     }
     init() {
-        document.getElementById('initAudio').click();
         this.wheelCanvas = document.getElementById('wheelCanvas');
         this.wheelCtx = this.wheelCanvas.getContext('2d');
         this.drawWheel();
         this.updateDisplay();
         this.buildBetTable();
         this.setupEvents();
-        this.loadHistory();
     }
     updateDisplay() {
         document.getElementById('balance').textContent = this.user.balance.toFixed(0);
@@ -150,14 +148,12 @@ class RouletteGame {
                 btn.classList.add('active');
                 this.currentChip = parseInt(btn.dataset.chip);
                 this.updateDisplay();
-                // Убрал звук клика
             });
         });
         document.querySelector('.clear-btn').addEventListener('click', () => {
             document.querySelectorAll('.bet-cell').forEach(cell => cell.classList.remove('bet-placed'));
             this.bets = [];
             this.updateDisplay();
-            // Убрал звук клика
         });
         document.getElementById('spinBtn').addEventListener('click', () => this.spinWheel());
         document.getElementById('quickSpin')?.addEventListener('click', () => this.spinWheel());
@@ -179,7 +175,7 @@ class RouletteGame {
     }
     placeBet(number, event) {
         if (this.currentChip > this.user.balance || this.isSpinning) {
-            document.getElementById('resultMessage').textContent = '❌ Insufficient funds or wheel spinning!';
+            document.getElementById('resultMessage').textContent = 'Insufficient funds or wheel spinning!';
             this.playSound('lose');
             return;
         }
@@ -188,21 +184,20 @@ class RouletteGame {
         event.target.classList.add('bet-placed');
         
         this.updateDisplay();
-        // Убрал звук chip
     }
     getTotalBet() {
         return this.bets.reduce((sum, bet) => sum + bet.amount, 0);
     }
     spinWheel() {
         if (this.bets.length === 0) {
-            document.getElementById('resultMessage').textContent = '❌ Place your bets first!';
+            document.getElementById('resultMessage').textContent = 'Place your bets first!';
             return;
         }
         this.isSpinning = true;
         const btn = document.getElementById('spinBtn');
         btn.disabled = true;
         btn.style.opacity = '0.7';
-        document.getElementById('resultMessage').textContent = '🔄 SPINNING...';
+        document.getElementById('resultMessage').textContent = 'SPINNING...';
         const spins = 5 + Math.random() * 3;
         const finalRotation = spins * 360 + Math.random() * 360;
         
@@ -229,10 +224,6 @@ class RouletteGame {
         const angleStep = (Math.PI * 2) / 37;
         const resultIndex = Math.floor(normalizedRad / angleStep) % 37;
         const result = this.numbers[resultIndex];
-        this.history.unshift(result);
-        if (this.history.length > 12) this.history.pop();
-        this.saveHistory();
-        this.updateHistory();
         let winnings = 0;
         this.bets.forEach(bet => {
             if (bet.number === result) winnings += bet.amount * 35;
@@ -240,10 +231,10 @@ class RouletteGame {
         this.user.addWinnings(winnings);
         this.updateDisplay();
         if (winnings > 0) {
-            document.getElementById('resultMessage').innerHTML = `🎉 ${result} | +$${winnings.toLocaleString()}`;
+            document.getElementById('resultMessage').textContent = `${result} | +$${winnings.toLocaleString()}`;
             this.playSound('win');
         } else {
-            document.getElementById('resultMessage').innerHTML = `💔 ${result} | Loss`;
+            document.getElementById('resultMessage').textContent = `${result} | Loss`;
             this.playSound('lose');
         }
         document.querySelectorAll('.bet-cell').forEach(cell => cell.classList.remove('bet-placed'));
@@ -256,26 +247,6 @@ class RouletteGame {
             this.wheelCanvas.style.transform = 'rotate(0deg)';
         }, 200);
     }
-    updateHistory() {
-        const history = document.getElementById('historyList');
-        history.innerHTML = '';
-        this.history.slice(0, 12).forEach(num => {
-            const span = document.createElement('span');
-            span.className = 'history-number';
-            span.textContent = num;
-            history.appendChild(span);
-        });
-    }
-    saveHistory() {
-        localStorage.setItem('rouletteHistory', JSON.stringify(this.history));
-    }
-    loadHistory() {
-        const saved = localStorage.getItem('rouletteHistory');
-        if (saved) {
-            this.history = JSON.parse(saved);
-            this.updateHistory();
-        }
-    }
     
     playSound(type) {
         if (!window.audioContext) {
@@ -287,7 +258,6 @@ class RouletteGame {
         try {
             switch(type) {
                 case 'spin':
-                    // Звук вращения колеса
                     const spinOsc = ctx.createOscillator();
                     const spinGain = ctx.createGain();
                     spinOsc.connect(spinGain);
@@ -302,7 +272,6 @@ class RouletteGame {
                     break;
                     
                 case 'win':
-                    // Победный звук (аккорд C-E-G)
                     const frequencies = [523.25, 659.25, 783.99];
                     frequencies.forEach((freq, index) => {
                         const osc = ctx.createOscillator();
@@ -320,7 +289,6 @@ class RouletteGame {
                     break;
                     
                 case 'lose':
-                    // Звук проигрыша
                     const loseOsc = ctx.createOscillator();
                     const loseGain = ctx.createGain();
                     loseOsc.connect(loseGain);
