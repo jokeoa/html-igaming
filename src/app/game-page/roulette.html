@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roulette - HTML Casino</title>
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="layout-container">
+      <header class="header">
+        <nav class="navbar navbar-expand-lg custom-header py-2">
+          <div class="container-fluid px-2 px-lg-3">
+            <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+              <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+                <li class="nav-item"><a class="nav-link" href="../about/page.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../faq/page.html">FAQ</a></li>
+              </ul>
+              <div class="d-flex align-items-center gap-2">
+                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                  <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+                  GitHub
+                </a>
+                <a href="../catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main-content">
+      <div class="game-container container py-4 py-lg-5">
+        <div class="game-header">
+          <h1 class="game-title">🎰 Roulette</h1>
+          <p class="game-subtitle">Classic casino wheel game - bet on numbers 0-36 and watch the wheel spin!</p>
+        </div>
+
+        <div class="game-content row g-4 align-items-start">
+          <div class="game-image-section col-12 col-lg-6 order-1 order-lg-1">
+            <div class="gallery-container">
+              <h3 class="gallery-title">Game Gallery</h3>
+              <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="../../../public/roulette/roulette-wheel.jpg" class="d-block w-100" alt="Roulette wheel">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/table.jpg" class="d-block w-100" alt="Roulette table">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/spinning.jpg" class="d-block w-100" alt="Spinning roulette">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/chips.jpg" class="d-block w-100" alt="Casino chips">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/number17.jpg" class="d-block w-100" alt="Winning number 17">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/casino.jpg" class="d-block w-100" alt="Casino roulette">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/golden-wheel.jpg" class="d-block w-100" alt="Golden roulette wheel">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/top-view.jpg" class="d-block w-100" alt="Top view roulette">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/ball20.jpg" class="d-block w-100" alt="Ball on number 20">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/roulette/luxury.jpg" class="d-block w-100" alt="Luxury roulette">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-info-section col-12 col-lg-6 order-2 order-lg-2">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">About Roulette</h3>
+                    <p class="card-text">
+                      Roulette is the ultimate casino classic. Place your bets on numbers 0-36, 
+                      then watch as the wheel spins and the ball finds its winning pocket!
+                    </p>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">How to Play</h3>
+                    <ul class="card-text">
+                      <li>Choose chip value ($10, $50, $100)</li>
+                      <li>Click any number (0-36) to place your bet</li>
+                      <li>Hit SPIN or press SPACEBAR to start</li>
+                      <li>35x payout for exact number match!</li>
+                      <li>Clear button removes all bets</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Game Stats</h3>
+                    <div class="card-text">
+                      <p><strong>Difficulty:</strong> Easy</p>
+                      <p><strong>Min Bet:</strong> $10</p>
+                      <p><strong>Max Bet:</strong> Unlimited</p>
+                      <p><strong>Payout:</strong> 35x</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Ready to Spin?</h3>
+                    <p class="card-text">Place your bets and test your luck on the roulette wheel!</p>
+                    <nav class="d-grid gap-2" aria-label="Game actions">
+                      <a href="../games/roulette-games.html" class="btn btn-gradient" role="button">🎰 Play Now</a>
+                      <a href="../catalog/page.html" class="btn btn-outline" role="button">Back to Games</a>
+                    </nav>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </main>
+
+      <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link"
+              >User policy</a
+            >
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+          </nav>
+          <p class="footer-description">
+            Assignment 6: Advanced JavaScript & DOM Manipulation<br>
+            Roulette Game - Full implementation with wheel animation, betting system, 
+            sound effects, keyboard controls and cookie persistence.
+          </p>
+        </div>
+      </div>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
