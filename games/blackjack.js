@@ -10,13 +10,9 @@ const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
-let balance = 1000;
-let currentBet = 0;
-let gameState = 'bet'; // bet, playing, finished
+let gameState = 'bet';
 
 const elements = {
-  balance: document.getElementById('balance'),
-  currentBet: document.getElementById('currentBet'),
   playerCards: document.getElementById('playerCards'),
   dealerCards: document.getElementById('dealerCards'),
   playerScore: document.getElementById('playerScore'),
@@ -27,7 +23,6 @@ const elements = {
   gameStage: document.getElementById('gameStage'),
   postGameStage: document.getElementById('postGameStage'),
 
-  betAmount: document.getElementById('betAmount'),
   placeBetBtn: document.getElementById('placeBetBtn'),
   hitBtn: document.getElementById('hitBtn'),
   standBtn: document.getElementById('standBtn'),
@@ -151,8 +146,7 @@ function switchStage(stage) {
 
 function canSplit() {
   return playerHand.length === 2 &&
-         getCardValue(playerHand[0]) === getCardValue(playerHand[1]) &&
-         balance >= currentBet;
+         getCardValue(playerHand[0]) === getCardValue(playerHand[1]);
 }
 
 function checkSplitAvailable() {
@@ -160,22 +154,6 @@ function checkSplitAvailable() {
 }
 
 function startGame() {
-  const betAmount = parseInt(elements.betAmount.value);
-
-  if (isNaN(betAmount) || betAmount < 5 || betAmount > 500) {
-    alert('Bet must be between $5 and $500');
-    return;
-  }
-
-  if (betAmount > balance) {
-    alert('Insufficient balance');
-    return;
-  }
-
-  currentBet = betAmount;
-  balance -= currentBet;
-  updateBalance();
-
   hideMessage();
   createDeck();
   playerHand = [];
@@ -193,7 +171,6 @@ function startGame() {
   switchStage('playing');
   checkSplitAvailable();
 
-  // Blackjack
   if (calculateScore(playerHand) === 21) {
     stand();
   }
@@ -246,33 +223,11 @@ function split() {
 }
 
 function endGame(result, message) {
-  if (result === 'win') {
-    balance += currentBet * 2;
-    showMessage(message, 'win');
-  } else if (result === 'lose') {
-    showMessage(message, 'lose');
-  } else if (result === 'push') {
-    balance += currentBet;
-    showMessage(message, 'push');
-  }
-
-  updateBalance();
+  showMessage(message, result === 'win' ? 'win' : result === 'lose' ? 'lose' : 'push');
   switchStage('finished');
 }
 
-function updateBalance() {
-  elements.balance.textContent = balance;
-  elements.currentBet.textContent = currentBet;
-}
-
 function playAgain() {
-  if (balance < 5) {
-    alert('Insufficient balance. Game over!');
-    balance = 1000;
-    updateBalance();
-  }
-
-  currentBet = 0;
   elements.playerCards.innerHTML = '';
   elements.dealerCards.innerHTML = '';
   elements.playerScore.textContent = '';
@@ -286,9 +241,5 @@ elements.hitBtn.addEventListener('click', hit);
 elements.standBtn.addEventListener('click', stand);
 elements.splitBtn.addEventListener('click', split);
 elements.playAgainBtn.addEventListener('click', playAgain);
-
-elements.betAmount.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') startGame();
-});
 
 switchStage('bet');
