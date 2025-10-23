@@ -857,6 +857,19 @@
       </button>
     </div>
 
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 11000;">
+      <div id="greetingToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+          <strong class="me-auto" id="toastTitle">Welcome!</strong>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastMessage" style="background-color: var(--bg-secondary); color: white;">
+          Good day!
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/theme-switcher.js"></script>
     <script src="src/js/index.js"></script>
