@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackjack Game - HTML Casino</title>
+    <link rel="stylesheet" href="../src/globals.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="blackjack.css" />
+  </head>
+  <body>
+    <div class="layout-container">
+      <header class="header">
+        <nav class="navbar navbar-expand-lg custom-header py-2">
+          <div class="container-fluid px-2 px-lg-3">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+              <img src="../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+                <li class="nav-item"><a class="nav-link" href="../src/app/about/page.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../src/app/faq/page.html">FAQ</a></li>
+              </ul>
+              <div class="d-flex align-items-center gap-2">
+                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                  <img src="../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+                  GitHub
+                </a>
+                <a href="../src/app/catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main-content">
+        <div class="game-area">
+          <div class="game-info">
+            <h1>Blackjack</h1>
+          </div>
+
+          <div id="gameMessage" class="message" style="display: none;"></div>
+
+          <div class="row g-4">
+            <div class="col-12">
+              <div class="dealer-area">
+                <h3 class="text-white mb-3">Dealer</h3>
+                <div id="dealerCards" class="cards-container"></div>
+                <div id="dealerScore" class="score-display"></div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="player-area">
+                <h3 class="text-white mb-3">Player</h3>
+                <div id="playerCards" class="cards-container"></div>
+                <div id="playerScore" class="score-display"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div class="hotbar">
+        <div class="hotbar-content">
+          <div id="betStage" style="display: none;">
+            <button id="placeBetBtn" class="btn btn-gradient">Start Game</button>
+          </div>
+
+          <div id="gameStage" style="display: none;">
+            <button id="hitBtn" class="btn btn-gradient">Hit</button>
+            <button id="standBtn" class="btn btn-outline">Stand</button>
+            <button id="splitBtn" class="btn btn-outline" style="display: none;">Split</button>
+          </div>
+
+          <div id="postGameStage" style="display: none;">
+            <button id="playAgainBtn" class="btn btn-gradient">Play Again</button>
+            <a href="../src/app/catalog/page.html" class="btn btn-outline">Back to Games</a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-top">
+            <div class="footer-logo">
+              <a href="../index.html">
+                <img
+                  src="../public/Logo.svg"
+                  alt="HTML casino"
+                  class="footer-logo-svg"
+                />
+              </a>
+            </div>
+            <a href="../src/app/catalog/page.html" class="btn btn-gradient">Play games</a>
+          </div>
+          <div class="footer-bottom">
+            <nav class="footer-links">
+              <a href="../index.html" class="footer-link">Main</a>
+              <a href="../src/app/about/page.html" class="footer-link">About</a>
+              <a href="../src/app/user-policy/page.html" class="footer-link">User policy</a>
+              <a href="../src/app/faq/page.html" class="footer-link">FAQ</a>
+              <a href="../src/app/catalog/page.html" class="footer-link">Games</a>
+              <a href="../src/app/sitemap/page.html" class="footer-link">Site map</a>
+            </nav>
+            <p class="footer-description">
+              Made by Yandex Gophers team: Madiyar Sarbayev, Vladislav Kutsenko,
+              Amir Alenov, and Bekdaulet Bolatov for Web Technologies 1 course.
+              This project was created for educational purposes by the student
+              team at Astana IT University.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="blackjack.js"></script>
+  </body>
+</html>

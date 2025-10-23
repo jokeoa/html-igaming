@@ -1,0 +1,146 @@
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+.game-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dealer-area, .player-area {
+  min-height: 200px;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cards-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 140px;
+  align-items: center;
+}
+
+.card {
+  width: 100px;
+  height: 140px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: #000;
+}
+
+.card.red {
+  color: #dc3545;
+}
+
+.card.back {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-suit {
+  font-size: 2rem;
+}
+
+.score-display {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.hotbar {
+  position: sticky;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hotbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  color: white;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.message.win {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.message.lose {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+.message.push {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
