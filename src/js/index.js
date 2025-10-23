@@ -36,3 +36,41 @@ document.addEventListener('keydown', function(event) {
     closePopup();
   }
 });
+
+// Time-based greeting toast
+function showGreetingToast() {
+  const hour = new Date().getHours();
+  const toastTitle = document.getElementById('toastTitle');
+  const toastMessage = document.getElementById('toastMessage');
+
+  let greeting, message;
+
+  if (hour >= 5 && hour < 12) {
+    greeting = 'Good Morning!';
+    message = 'Start your day with some exciting casino games!';
+  } else if (hour >= 12 && hour < 17) {
+    greeting = 'Good Afternoon!';
+    message = 'Perfect time to try your luck at our casino!';
+  } else if (hour >= 17 && hour < 21) {
+    greeting = 'Good Evening!';
+    message = 'Evening is the best time to play and win!';
+  } else {
+    greeting = 'Good Night!';
+    message = 'Late night gaming sessions are the most thrilling!';
+  }
+
+  toastTitle.textContent = greeting;
+  toastMessage.textContent = message;
+
+  const toastElement = document.getElementById('greetingToast');
+  const toast = new bootstrap.Toast(toastElement, {
+    autohide: true,
+    delay: 5000
+  });
+  toast.show();
+}
+
+// Show toast when page loads
+window.addEventListener('load', function() {
+  setTimeout(showGreetingToast, 1000);
+});
