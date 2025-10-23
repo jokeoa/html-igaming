@@ -220,7 +220,7 @@
               <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
               GitHub
             </a>
-            <a href="../catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
+            <a href="../user-profile/page.html" class="btn btn-gradient btn-sm px-3 py-1">👤 Profile</a>
           </div>
         </div>
       </div>
@@ -318,7 +318,7 @@
             <img src="../../../public/Logo.svg" alt="HTML casino" class="footer-logo-svg" />
           </a>
         </div>
-        <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        <a href="../user-profile/page.html" class="btn btn-gradient">👤 Profile</a>
       </div>
       <div class="footer-bottom">
         <nav class="footer-links">
@@ -347,32 +347,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <script>
-    // TASK 4: BACKGROUND COLOR CHANGER
-    const themes = ['theme-blue', 'theme-purple', 'theme-green', 'theme-red'];
-    let currentThemeIndex = 0;
-
-    function changeTheme() {
-      const body = document.body;
-      
-      // Remove current theme
-      body.classList.remove(themes[currentThemeIndex]);
-      
-      // Move to next theme
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      
-      // Add new theme
-      body.classList.add(themes[currentThemeIndex]);
-      
-      // Log theme change for testing
-      console.log('Theme changed to:', themes[currentThemeIndex]);
-    }
-
-    // Set initial theme on page load
-    window.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('theme-blue');
-    });
-  </script>
+  <script src="../../js/theme-switcher.js"></script>
 </body>
 </html>
