@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - HTML Casino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      /* Profile specific styles */
+      .profile-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .profile-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-color), #ff8434);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        margin: 0 auto 1rem;
+        color: white;
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .profile-avatar:hover {
+        transform: scale(1.05);
+      }
+
+      .profile-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-email {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+      }
+
+      .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .stat-card {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .profile-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .action-card {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .action-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-color);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .action-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .action-title {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .action-description {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .profile-container {
+          padding: 1rem;
+        }
+
+        .profile-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-actions {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-blue">
+    <header class="header">
+      <nav class="navbar navbar-expand-lg custom-header py-2">
+        <div class="container-fluid px-2 px-lg-3">
+          <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+            <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+              <li class="nav-item"><a class="nav-link" href="../about/page.html">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="../faq/page.html">FAQ</a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-2">
+              <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+                GitHub
+              </a>
+              <a href="../catalog/page.html" class="btn btn-gradient btn-sm px-3 py-1">Play games</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="profile-main">
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="profile-avatar">👤</div>
+          <h1 class="profile-name">Guest User</h1>
+          <p class="profile-email">guest@htmlcasino.com</p>
+        </div>
+
+        <div class="profile-stats">
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Games Played</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Total Wins</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Achievements</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Days Active</div>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <div class="action-card" onclick="window.location.href='../catalog/page.html'">
+            <span class="action-icon">🎮</span>
+            <h3 class="action-title">Play Games</h3>
+            <p class="action-description">Browse and play our collection of casino games</p>
+          </div>
+          <div class="action-card" onclick="window.location.href='../about/page.html'">
+            <span class="action-icon">ℹ️</span>
+            <h3 class="action-title">About Platform</h3>
+            <p class="action-description">Learn more about HTML Casino and our mission</p>
+          </div>
+          <div class="action-card" onclick="window.location.href='../faq/page.html'">
+            <span class="action-icon">❓</span>
+            <h3 class="action-title">Help & FAQ</h3>
+            <p class="action-description">Get answers to common questions</p>
+          </div>
+          <div class="action-card" onclick="window.location.href='../user-policy/page.html'">
+            <span class="action-icon">📋</span>
+            <h3 class="action-title">User Policy</h3>
+            <p class="action-description">Read our terms and conditions</p>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <strong>Welcome to HTML Casino!</strong> This is an educational demonstration platform. 
+          All games are for learning purposes only and do not involve real money or gambling.
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../catalog/page.html" class="btn btn-gradient">Play games</a>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link">User policy</a>
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+          </nav>
+          <p class="footer-description">
+            Made by Yandex Gophers team: Madiyar Sarbayev, Vladislav Kutsenko,
+            Amir Alenov, and Bekdaulet Bolatov for Web Technologies 1 course.
+            This project was created for educational purposes by the student
+            team at Astana IT University.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- TASK 4: THEME SWITCHER BUTTON -->
+    <div class="theme-switcher">
+      <button class="theme-btn" onclick="changeTheme()" title="Change Theme">
+        🎨
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/theme-switcher.js"></script>
+  </body>
+</html>

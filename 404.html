@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="src/globals.css" />
     <link rel="stylesheet" href="src/app/404/styles.css" />
   </head>
-  <body>
+  <body class="theme-blue">
     <header class="header">
       <div class="header-content">
         <div class="header-left">
@@ -39,8 +39,8 @@
             <img src="public/GitHub.svg" alt="GitHub" class="github-icon" />
             GitHub
           </a>
-          <a href="src/app/catalog/page.html" class="btn btn-gradient"
-            >Play games</a
+          <a href="src/app/user-profile/page.html" class="btn btn-gradient"
+            >👤 Profile</a
           >
         </div>
       </div>
@@ -121,8 +121,8 @@
               />
             </a>
           </div>
-          <a href="src/app/catalog/page.html" class="btn btn-gradient"
-            >Play games</a
+          <a href="src/app/user-profile/page.html" class="btn btn-gradient"
+            >👤 Profile</a
           >
         </div>
         <div class="footer-bottom">
@@ -146,5 +146,14 @@
         </div>
       </div>
     </footer>
+
+    <!-- TASK 4: THEME SWITCHER BUTTON -->
+    <div class="theme-switcher">
+      <button class="theme-btn" onclick="changeTheme()" title="Change Theme">
+        🎨
+      </button>
+    </div>
+
+    <script src="src/js/theme-switcher.js"></script>
   </body>
 </html>
