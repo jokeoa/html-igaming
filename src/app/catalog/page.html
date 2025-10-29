@@ -24,13 +24,10 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-
 <body class="theme-blue">
+  <div id="scroll-progress" class="scroll-progress"></div>
   <header class="header">
     <nav class="navbar navbar-expand-lg custom-header py-2">
-
-        
-
       <div class="container-fluid px-2 px-lg-3">
         <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
           <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
@@ -57,43 +54,12 @@
 
   <main class="catalog-main">
     <div class="catalog-container container py-4 py-lg-5">
-<div class="catalog-header">
-  <h1 class="catalog-title">Game Catalog</h1>
-  <p class="catalog-subtitle">
-    Choose from our collection of classic casino games
-  </p>
-
-  <!-- SEARCH BAR WITH AUTOCOMPLETE -->
-  <div class="search-container mt-4 position-relative">
-    <input type="text" id="game-search" class="form-control search-input" placeholder="Search games..." autocomplete="off" />
-    <div id="autocomplete-list" class="autocomplete-items shadow-lg"></div>
-  </div>
-</div>
-
-<!-- MODAL WINDOW -->
-<div class="modal fade" id="gameModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border-0" style="border-radius: 16px;">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title" id="modalGameTitle"></h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="catalog-header">
+        <h1 class="catalog-title">Game Catalog</h1>
+        <p class="catalog-subtitle">
+          Choose from our collection of classic casino games
+        </p>
       </div>
-      <div class="modal-body pt-2">
-        <div class="text-center mb-3">
-          <div id="modalGameIcon" style="font-size: 64px;"></div>
-        </div>
-        <p id="modalGameDesc" class="mb-3"></p>
-        <div id="modalGameBadges" class="d-flex gap-2 flex-wrap justify-content-center mb-3"></div>
-      </div>
-      <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-gradient" id="modalPlayButton">Play Now</button>
-        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-      
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
         <div class="col">

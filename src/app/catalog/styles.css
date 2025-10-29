@@ -258,3 +258,16 @@
 #gameModal .badge {
   font-size: 0.8rem;
 }
+
+/* Task 4: Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 6px;
+  background: linear-gradient(90deg, #ff6500, #ff8434, #ffb800);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(255, 101, 0, 0.5);
+}
