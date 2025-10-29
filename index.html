@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
       * {
         margin: 0;
@@ -627,8 +628,33 @@
           font-size: 14px;
         }
       }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+/* Task 5: Animated Counter */
+.stats-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6500, #ffb800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.stat-item p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+}
+
+
+
+  </style>
   </head>
   <body class="theme-blue">
     <header>
@@ -801,6 +827,31 @@
       </main>
     </div>
 
+  <div class="stats-section py-5 text-center">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-item">
+          <h3 class="counter" data-target="1250">0</h3>
+          <p>Active Players</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-item">
+          <h3 class="counter" data-target="98">0</h3>
+          <p>% Uptime</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-item">
+          <h3 class="counter" data-target="50">0</h3>
+          <p>Games Available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-top">
@@ -878,10 +929,64 @@
       window.addEventListener('load', loadThemePreference);
     </script>
 
-      
+<script>
+// === TASK 5: Animated Number Counter ===
+let countersAnimated = false;
+
+function animateCounters() {
+  $('.counter').each(function() {
+    const $this = $(this);
+    const target = parseInt($this.data('target'));
+    let count = 0;
+    const increment = Math.ceil(target / 50);
+    const interval = 30;
+
+    const timer = setInterval(() => {
+      count += increment;
+      if (count >= target) {
+        $this.text(target + (target === 98 ? '%' : '+'));
+        clearInterval(timer);
+      } else {
+        $this.text(count);
+      }
+    }, interval);
+  });
+}
+
+$(window).on('scroll', function() {
+  if (countersAnimated) return;
+
+  const $section = $('.stats-section');
+  const sectionTop = $section.offset().top;
+  const sectionHeight = $section.outerHeight();
+  const windowHeight = $(window).height();
+  const scroll = $(window).scrollTop();
+
+  if (scroll > sectionTop + sectionHeight - windowHeight - 100) {
+    animateCounters();
+    countersAnimated = true;
+    $(this).off('scroll');
+  }
+});
+
+// Запуск при загрузке (на случай, если секция уже видна)
+$(document).ready(function() {
+  if ($('.stats-section').length) {
+    const check = () => {
+      if (!countersAnimated && $(window).scrollTop() + $(window).height() > $('.stats-section').offset().top) {
+        animateCounters();
+        countersAnimated = true;
+      }
+    };
+    check();
+    $(window).on('scroll', check);
+  }
+});
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/theme-switcher.js"></script>
     <script src="src/js/index.js"></script>
+    
   </body>
 </html>
