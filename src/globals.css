@@ -566,7 +566,7 @@ body {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); background: linear-gradient(45deg, #ffd700, #ffed4a); }
 /* THEME-AWARE COMPONENT STYLES */
-
+}
 /* Header styling with theme support */
 .header {
     background: var(--bg-header);
