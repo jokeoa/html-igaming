@@ -31,6 +31,17 @@
               <li class="nav-item"><a class="nav-link active" aria-current="page" href="../faq/page.html">FAQ</a></li>
             </ul>
             <div class="d-flex align-items-center gap-2">
+              <!-- Search Bar with Autocomplete -->
+              <div class="search-container-header">
+                <input 
+                  type="text" 
+                  id="faqSearch" 
+                  class="search-input-header" 
+                  placeholder="🔍 Search..." 
+                  autocomplete="off"
+                />
+                <div id="autocompleteList" class="autocomplete-list"></div>
+              </div>
               <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
                 <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
                 GitHub
@@ -245,7 +256,9 @@
       </button>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../js/theme-switcher.js"></script>
+    <script src="faq-search.js"></script>
   </body>
 </html>
