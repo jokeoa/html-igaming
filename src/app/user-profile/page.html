@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../globals.css" />
     <link rel="stylesheet" href="styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
       /* Profile specific styles */
       .profile-container {
@@ -50,6 +51,70 @@
         font-weight: 700;
         color: white;
         margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      
+      .copy-btn-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+      }
+      
+      .copy-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+      
+      .copy-btn.copied {
+        background: linear-gradient(135deg, #10b981, #059669);
+        border-color: #10b981;
+      }
+      
+      .copy-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        margin-bottom: 0.5rem;
+      }
+      
+      .copy-tooltip.show {
+        opacity: 1;
+      }
+      
+      .copy-tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.9);
       }
 
       .profile-email {
@@ -179,7 +244,14 @@
       <div class="profile-container">
         <div class="profile-header">
           <div class="profile-avatar">👤</div>
-          <h1 class="profile-name">Guest User</h1>
+          <div class="copy-btn-container">
+            <h1 class="profile-name" id="userName">Guest User</h1>
+            <button class="copy-btn" id="copyBtn">
+              <span id="copyIcon">📋</span>
+              <span id="copyText">Copy</span>
+            </button>
+            <div class="copy-tooltip" id="copyTooltip">Copied to clipboard!</div>
+          </div>
           <p class="profile-email">guest@htmlcasino.com</p>
         </div>
 
@@ -274,5 +346,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../js/theme-switcher.js"></script>
+    
+    <script>
+      // jQuery Copy to Clipboard functionality
+      $(document).ready(function() {
+        $('#copyBtn').on('click', function() {
+          const userName = $('#userName').text();
+          const $btn = $(this);
+          const $icon = $('#copyIcon');
+          const $text = $('#copyText');
+          const $tooltip = $('#copyTooltip');
+          
+          // Create a temporary input to copy text
+          const $temp = $('<input>');
+          $('body').append($temp);
+          $temp.val(userName).select();
+          document.execCommand('copy');
+          $temp.remove();
+          
+          // Change button appearance
+          $btn.addClass('copied');
+          $icon.text('✓');
+          $text.text('Copied!');
+          
+          // Show tooltip
+          $tooltip.addClass('show');
+          
+          // Trigger copy event (as per hint)
+          $btn.trigger('copy');
+          
+          // Reset after 2 seconds
+          setTimeout(function() {
+            $btn.removeClass('copied');
+            $icon.text('📋');
+            $text.text('Copy');
+            $tooltip.removeClass('show');
+          }, 2000);
+        });
+        
+        // Optional: Listen to copy event
+        $('#copyBtn').on('copy', function() {
+          console.log('Copy event triggered!');
+        });
+      });
+    </script>
   </body>
 </html>
