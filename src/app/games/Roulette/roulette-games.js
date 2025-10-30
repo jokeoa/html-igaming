@@ -1,3 +1,46 @@
+// jQuery Toast Notification Function
+function showToast(title, message, type) {
+    const $toast = $('#toastNotification');
+    const $title = $('#toastTitle');
+    const $message = $('#toastMessage');
+    
+    // Remove all type classes
+    $toast.removeClass('toast-win toast-lose toast-start hiding');
+    
+    // Add appropriate class based on type
+    $toast.addClass('toast-' + type);
+    
+    // Set content
+    $title.text(title);
+    $message.text(message);
+    
+    // Show toast
+    $toast.fadeIn(300);
+    
+    // Auto hide after 3 seconds
+    setTimeout(() => {
+        $toast.addClass('hiding');
+        setTimeout(() => {
+            $toast.fadeOut(300, () => {
+                $toast.removeClass('hiding');
+            });
+        }, 300);
+    }, 3000);
+}
+
+// Close toast on button click
+$(document).ready(function() {
+    $('#toastClose').on('click', function() {
+        const $toast = $('#toastNotification');
+        $toast.addClass('hiding');
+        setTimeout(() => {
+            $toast.fadeOut(300, () => {
+                $toast.removeClass('hiding');
+            });
+        }, 300);
+    });
+});
+
 class RouletteGame {
     constructor() {
         this.numbers = Array.from({length: 37}, (_, i) => i);
@@ -84,6 +127,10 @@ class RouletteGame {
         btn.disabled = true;
         btn.style.opacity = '0.7';
         document.getElementById('resultMessage').textContent = 'SPINNING...';
+        
+        // Show toast for game start
+        showToast('Spinning the Wheel! 🎰', 'Good luck! Watch the wheel spin...', 'start');
+        
         const spins = 5 + Math.random() * 3;
         const finalRotation = spins * 360 + Math.random() * 360;
 
@@ -110,7 +157,18 @@ class RouletteGame {
         const resultIndex = Math.floor(normalizedRad / angleStep) % 37;
         const result = this.numbers[resultIndex];
         document.getElementById('resultMessage').textContent = `Result: ${result}`;
-        this.playSound(Math.random() > 0.5 ? 'win' : 'lose');
+        
+        // Randomly determine win/loss for demo purposes
+        const isWin = Math.random() > 0.5;
+        this.playSound(isWin ? 'win' : 'lose');
+        
+        // Show toast based on outcome
+        if (isWin) {
+            showToast('You Won! 🎉', `The ball landed on ${result}! Congratulations!`, 'win');
+        } else {
+            showToast('Better Luck Next Time! 😔', `The ball landed on ${result}. Try again!`, 'lose');
+        }
+        
         document.getElementById('spinBtn').disabled = false;
         document.getElementById('spinBtn').style.opacity = '1';
         this.isSpinning = false;
