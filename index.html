@@ -843,6 +843,69 @@
     </div>
   </div>
 </section>
+
+<section class="games-section">
+  <div class="container py-5">
+    <h2 class="games-title">Featured Game Screenshots</h2>
+    <p class="text-center mb-4" style="color: rgba(255, 255, 255, 0.8);">Images load automatically as you scroll down</p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/black-jack/BlackjackTable.jpg.webp" alt="Blackjack Table" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Blackjack Table</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional blackjack gaming table</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/roulette/roulette-wheel.jpg" alt="Roulette Wheel" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Roulette Wheel</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Classic casino roulette wheel</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/roulette/casino.jpg" alt="Casino Interior" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Casino Interior</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Luxurious casino atmosphere</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/roulette/golden-wheel.jpg" alt="Golden Wheel" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Golden Wheel</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Premium roulette experience</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/roulette/chips.jpg" alt="Casino Chips" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Casino Chips</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">High-quality gaming chips</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img class="lazy-load card-img-top" data-src="public/roulette/table.jpg" alt="Gaming Table" style="min-height: 200px; background: rgba(255,255,255,0.1);">
+          <div class="card-body">
+            <h5 class="card-title" style="color: white;">Gaming Table</h5>
+            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional gaming setup</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
     </div>
 
@@ -1019,6 +1082,76 @@ $('#stay-updated-form').on('submit', function(e) {
     $btn.prop('disabled', false).html(original);
     alert('Subscribed successfully!');
   }, 2000);
+});
+
+// === TASK 3: Image Lazy Loading ===
+$(document).ready(function() {
+  // Function to check if element is in viewport
+  function isInViewport($element) {
+    const elementTop = $element.offset().top;
+    const elementBottom = elementTop + $element.outerHeight();
+    const viewportTop = $(window).scrollTop();
+    const viewportBottom = viewportTop + $(window).height();
+    
+    // Add some buffer (100px) to start loading before image enters viewport
+    return elementBottom > viewportTop - 100 && elementTop < viewportBottom + 100;
+  }
+  
+  // Function to load images
+  function loadVisibleImages() {
+    $('.lazy-load').each(function() {
+      const $img = $(this);
+      
+      // Check if image hasn't been loaded yet and is in viewport
+      if (!$img.hasClass('loaded') && isInViewport($img)) {
+        const dataSrc = $img.attr('data-src');
+        
+        if (dataSrc) {
+          // Add loading animation
+          $img.css({
+            'opacity': '0.3',
+            'transition': 'opacity 0.5s ease'
+          });
+          
+          // Create new image to preload
+          const tempImg = new Image();
+          tempImg.onload = function() {
+            // Set the src attribute and mark as loaded
+            $img.attr('src', dataSrc);
+            $img.addClass('loaded');
+            $img.css('opacity', '1');
+            
+            console.log('Lazy loaded:', dataSrc);
+          };
+          
+          tempImg.onerror = function() {
+            console.error('Failed to load:', dataSrc);
+            // Show placeholder on error
+            $img.css({
+              'opacity': '1',
+              'background': 'rgba(255, 0, 0, 0.1)'
+            });
+            $img.addClass('loaded');
+          };
+          
+          tempImg.src = dataSrc;
+        }
+      }
+    });
+  }
+  
+  // Load images on scroll
+  $(window).on('scroll', function() {
+    loadVisibleImages();
+  });
+  
+  // Load images on page load (for images already in viewport)
+  loadVisibleImages();
+  
+  // Also check on resize
+  $(window).on('resize', function() {
+    loadVisibleImages();
+  });
 });
 
 </script>

@@ -12,6 +12,49 @@ let playerHand = [];
 let dealerHand = [];
 let gameState = 'bet';
 
+// jQuery Toast Notification Function
+function showToast(title, message, type) {
+  const $toast = $('#toastNotification');
+  const $title = $('#toastTitle');
+  const $message = $('#toastMessage');
+  
+  // Remove all type classes
+  $toast.removeClass('toast-win toast-lose toast-start toast-push hiding');
+  
+  // Add appropriate class based on type
+  $toast.addClass('toast-' + type);
+  
+  // Set content
+  $title.text(title);
+  $message.text(message);
+  
+  // Show toast
+  $toast.fadeIn(300);
+  
+  // Auto hide after 3 seconds
+  setTimeout(() => {
+    $toast.addClass('hiding');
+    setTimeout(() => {
+      $toast.fadeOut(300, () => {
+        $toast.removeClass('hiding');
+      });
+    }, 300);
+  }, 3000);
+}
+
+// Close toast on button click
+$(document).ready(function() {
+  $('#toastClose').on('click', function() {
+    const $toast = $('#toastNotification');
+    $toast.addClass('hiding');
+    setTimeout(() => {
+      $toast.fadeOut(300, () => {
+        $toast.removeClass('hiding');
+      });
+    }, 300);
+  });
+});
+
 const elements = {
   playerCards: document.getElementById('playerCards'),
   dealerCards: document.getElementById('dealerCards'),
@@ -171,6 +214,9 @@ function startGame() {
   switchStage('playing');
   checkSplitAvailable();
 
+  // Show toast for game start
+  showToast('Game Started!', 'Good luck! Try to get 21 without going over.', 'start');
+
   if (calculateScore(playerHand) === 21) {
     stand();
   }
@@ -225,6 +271,15 @@ function split() {
 function endGame(result, message) {
   showMessage(message, result === 'win' ? 'win' : result === 'lose' ? 'lose' : 'push');
   switchStage('finished');
+  
+  // Show toast based on game outcome
+  if (result === 'win') {
+    showToast('You Won! 🎉', message, 'win');
+  } else if (result === 'lose') {
+    showToast('You Lost 😔', message, 'lose');
+  } else {
+    showToast('Push! 🤝', message, 'push');
+  }
 }
 
 function playAgain() {
