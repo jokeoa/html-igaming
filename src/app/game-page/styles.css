@@ -44,11 +44,19 @@
     margin: 0 0 16px 0;
 }
 
+body.theme-light .game-title {
+    color: #0f172a;
+}
+
 .game-subtitle {
     font-family: 'Geist Mono', monospace;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
+}
+
+body.theme-light .game-subtitle {
+    color: rgba(15, 23, 42, 0.75);
 }
 
 .game-content {
@@ -71,6 +79,10 @@
     color: white;
     margin: 0 0 20px 0;
     text-align: center;
+}
+
+body.theme-light .gallery-title {
+    color: #0f172a;
 }
 
 .gallery-grid {

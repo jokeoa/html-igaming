@@ -42,9 +42,17 @@
   margin-bottom: 0.5rem;
 }
 
+body.theme-light .profile-name {
+  color: #0f172a;
+}
+
 .profile-email {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.1rem;
+}
+
+body.theme-light .profile-email {
+  color: rgba(15, 23, 42, 0.7);
 }
 
 .profile-stats {
@@ -82,6 +90,10 @@
   letter-spacing: 0.5px;
 }
 
+body.theme-light .stat-label {
+  color: rgba(15, 23, 42, 0.8);
+}
+
 .profile-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -117,9 +129,17 @@
   margin-bottom: 0.5rem;
 }
 
+body.theme-light .action-title {
+  color: #0f172a;
+}
+
 .action-description {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
+}
+
+body.theme-light .action-description {
+  color: rgba(15, 23, 42, 0.7);
 }
 
 /* Responsive Design */

@@ -19,12 +19,24 @@
   font-family: "Geist Mono", monospace;
 }
 
+body.theme-light .policy-title {
+  color: #0f172a;
+}
+
 .policy-content {
   line-height: 1.7;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.9);
   font-family: "Geist Mono", monospace;
   font-weight: 400;
+}
+
+body.theme-light .policy-content {
+  color: rgba(15, 23, 42, 0.9);
+}
+
+.container {
+  background: var(--bg-secondary);
 }
 
 .policy-content h3 {
@@ -35,17 +47,26 @@
   font-family: "Geist Mono", monospace;
 }
 
+body.theme-light .policy-content h3 {
+  color: #0f172a;
+}
+
 .policy-content p {
   margin-bottom: 15px;
 }
 
+ 
 .policy-subtitle {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 20px;
   text-align: center;
   color: white;
-  font-family: "Geist Mono", monospace;
+  font-family: "Geist Mono", monospace; 
+}
+
+body.theme-light .policy-subtitle {
+  color: #0f172a;
 }
 
 /* Search Components Styles - Header Version */
@@ -60,10 +81,16 @@
   font-size: 14px;
   border: 1px solid rgba(217, 119, 6, 0.3);
   border-radius: 8px;
-  background: rgba(30, 58, 138, 0.5);
+  background: var(--bg-secondary) !important;
   color: white;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: "Geist Mono", monospace;
+}
+
+body.theme-light .search-input-header {
+  background: #f2f4f8;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #0f172a;
 }
 
 .search-input-header:focus {
@@ -78,6 +105,10 @@
 .search-input-header::placeholder {
   color: rgba(255, 255, 255, 0.5);
   font-size: 13px;
+}
+
+body.theme-light .search-input-header::placeholder {
+  color: rgba(15, 23, 42, 0.5);
 }
 
 /* Autocomplete Dropdown */
@@ -105,6 +136,16 @@
   transition: all 0.2s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-family: "Geist Mono", monospace;
+}
+
+body.theme-light .autocomplete-item {
+  color: #0f172a;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.theme-light .autocomplete-list {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .autocomplete-item:last-child {
@@ -145,6 +186,10 @@
   animation: fadeIn 0.3s ease;
 }
 
+body.theme-light .search-info {
+  color: rgba(15, 23, 42, 0.7);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -183,3 +228,4 @@
   }
 }
 
+ 
