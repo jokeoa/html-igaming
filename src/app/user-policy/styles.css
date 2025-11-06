@@ -58,7 +58,7 @@ body.theme-light .policy-content h3 {
   margin-bottom: 20px;
   text-align: center;
   color: white;
-  font-family: "Geist Mono", monospace;
+  font-family: "Geist Mono", monospace; 
 }
 
 body.theme-light .policy-subtitle {

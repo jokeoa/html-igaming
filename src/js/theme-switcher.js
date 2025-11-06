@@ -12,7 +12,7 @@ function setTheme(theme) {
   if (!themes.includes(theme)) return;
   currentThemeIndex = themes.indexOf(theme);
   applyTheme(theme);
-  try {
+  try { 
     localStorage.setItem('preferredTheme', theme);
     localStorage.setItem('themeIndex', String(currentThemeIndex));
   } catch (e) {

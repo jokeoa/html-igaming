@@ -74,7 +74,7 @@ $(document).ready(function() {
       $elem.html($elem.data('original-html'));
       // Apply highlights to text nodes only
       highlightTextNodes($elem, searchTerm);
-    });
+    }); 
   }
 
   // Task 2: Build autocomplete suggestions from FAQ data

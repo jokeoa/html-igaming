@@ -10,7 +10,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-body.theme-light .container {
+body.theme-light .container { 
   background: rgba(0, 0, 0, 0.03);
   border-color: rgba(0, 0, 0, 0.08);
 }
@@ -52,7 +52,7 @@ body.theme-light .sitemap-subtitle {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Light theme: make items slightly darker than their section container */
+/* Light theme: make items slightly darker than their section container */ 
 body.theme-light .sitemap-section {
   background: rgba(0, 0, 0, 0.02);
   border-color: rgba(0, 0, 0, 0.08);

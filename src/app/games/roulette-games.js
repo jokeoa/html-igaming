@@ -23,7 +23,7 @@ class RouletteGame {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const angleStep = (Math.PI * 2) / 37;
 
-        // Theme-aware colors for readability
+         // Theme-aware colors for readability
         const computedStyle = getComputedStyle(document.body);
         const gold = '#ffd700';
         const black = '#000000';
