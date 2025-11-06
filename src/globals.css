@@ -18,6 +18,27 @@ body.theme-blue {
     --accent-color: #ff6b35;
 }
 
+/* Light and Dark Themes */
+body.theme-light {
+    --bg-primary: #f5f7fb;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f2f7;
+    --bg-header: #d1d9e4;
+    --bg-gradient-start: #ffffff;
+    --bg-gradient-end: #eef2f7;
+    --accent-color: #ff6b35;
+}
+
+body.theme-dark {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1f1f1f; /* navbar background - slightly lighter */
+    --bg-tertiary: #141414;
+    --bg-header: #262626;   /* header background - noticeably lighter for contrast */
+    --bg-gradient-start: #0a0a0a;
+    --bg-gradient-end: #1a1a1a;
+    --accent-color: #ff6b35;
+}
+
 body.theme-purple {
     --bg-primary: #2d1b4e;
     --bg-secondary: #3d2c5a;
@@ -57,6 +78,7 @@ body {
     --bg-gradient-start: #0b192c;
     --bg-gradient-end: #173763;
     --accent-color: #ff6b35;
+    --accordion-icon-filter: brightness(0) invert(1);
     
     font-family: 'Geist', sans-serif;
     background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
@@ -66,6 +88,103 @@ body {
     flex-direction: column;
     margin: 0;
     transition: background 0.5s ease;
+}
+
+/* Light theme text & component color overrides */
+body.theme-light {
+    color: #0f172a;
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    --accordion-icon-filter: none;
+}
+
+body.theme-light .custom-header,
+body.theme-light .navbar {
+    background: var(--bg-header) !important;
+}
+
+body.theme-light .custom-header .navbar-brand,
+body.theme-light .custom-header .nav-link,
+body.theme-light .custom-header .navbar-text {
+    color: rgba(15, 23, 42, 0.85) !important;
+}
+
+body.theme-light .custom-header .nav-link.active,
+body.theme-light .custom-header .nav-link:hover,
+body.theme-light .custom-header .navbar-brand:hover {
+    color: var(--accent-color) !important;
+}
+
+body.theme-light .footer {
+    background: var(--bg-header);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.theme-light .footer-link { color: rgba(15, 23, 42, 0.75); }
+body.theme-light .footer-link:hover { color: var(--accent-color); }
+body.theme-light .footer-description { color: rgba(15, 23, 42, 0.65); }
+
+/* Buttons */
+body.theme-light .btn-outline {
+    border: 1px solid #0f172a;
+    color: #0f172a;
+}
+body.theme-light .btn-outline:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* Cards */
+body.theme-light .card { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.08) !important; }
+body.theme-light .card-body { background: #f8fafc !important; color: #0f172a !important; }
+body.theme-light .card-title { color: #0f172a !important; }
+body.theme-light .card-text { color: rgba(15, 23, 42, 0.8) !important; }
+
+/* Accordion */
+body.theme-light .accordion-item { background-color: #ffffff !important; border: 1px solid rgba(0,0,0,0.08) !important; }
+body.theme-light .accordion-button { background-color: #ffffff !important; color: #0f172a !important; }
+body.theme-light .accordion-button:not(.collapsed) { background-color: #f1f5f9 !important; color: #0f172a !important; }
+body.theme-light .accordion-button::after { filter: var(--accordion-icon-filter) !important; }
+body.theme-light .accordion-body { background-color: #f8fafc !important; color: rgba(15, 23, 42, 0.85) !important; }
+
+/* Alerts */
+body.theme-light .alert-info { background-color: #f8fafc !important; border: 1px solid rgba(0,0,0,0.08) !important; color: #0f172a !important; }
+
+/* Forms */
+body.theme-light .form-control {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: #0f172a !important;
+}
+body.theme-light .form-control::placeholder { color: rgba(15, 23, 42, 0.5) !important; }
+body.theme-light .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-color: var(--accent-color) !important;
+    color: #0f172a !important;
+}
+
+/* Header search input */
+body.theme-light .search-input-header {
+    background: #f2f4f8;
+    border: 1px solid rgba(0,0,0,0.15);
+    color: #0f172a;
+}
+body.theme-light .search-input-header::placeholder { color: rgba(15, 23, 42, 0.5); }
+body.theme-light .autocomplete-list { background: #ffffff; border: 1px solid rgba(0,0,0,0.12); }
+body.theme-light .autocomplete-item { color: #0f172a; }
+body.theme-light .autocomplete-item:hover { background: rgba(0,0,0,0.06); color: #0f172a; }
+
+/* Global white text to dark override for light theme - inline styles */
+body.theme-light [style*="color: white"],
+body.theme-light [style*="color:white"],
+body.theme-light [style*="color: #fff"],
+body.theme-light [style*="color:#fff"],
+body.theme-light [style*="color: #ffffff"],
+body.theme-light [style*="color:#ffffff"] {
+  color: #0f172a !important;
+}
+
+body.theme-light [style*="color: rgba(255, 255, 255"],
+body.theme-light [style*="color:rgba(255, 255, 255"] {
+  color: rgba(15, 23, 42, 0.8) !important;
 }
 
 /* Layout grid to support left sidebar (opt-in) */
@@ -420,15 +539,15 @@ body {
 
 /* Bootstrap Accordion Overrides */
 .accordion-item {
-    background-color: #1e3e62 !important;
+    background-color: var(--bg-secondary) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     margin-bottom: 10px !important;
     border-radius: 8px !important;
 }
 
 .accordion-button {
-    background-color: #1e3e62 !important;
-    color: white !important;
+    background-color: var(--bg-secondary) !important;
+    color: inherit !important;
     font-family: 'Geist', sans-serif !important;
     font-size: 18px !important;
     font-weight: 500 !important;
@@ -437,8 +556,8 @@ body {
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #0f2a44 !important;
-    color: white !important;
+    background-color: var(--bg-tertiary) !important;
+    color: inherit !important;
     box-shadow: none !important;
 }
 
@@ -448,22 +567,41 @@ body {
 }
 
 .accordion-button::after {
-    filter: brightness(0) invert(1) !important;
+    filter: var(--accordion-icon-filter) !important;
 }
 
 .accordion-body {
-    background-color: #0f2a44 !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: var(--bg-tertiary) !important;
+    color: inherit !important;
     font-family: 'Geist', sans-serif !important;
     border-radius: 0 0 8px 8px !important;
 }
 
+/* Make accordion text lighter in non-light themes */
+body:not(.theme-light) .accordion-button {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+body:not(.theme-light) .accordion-button:not(.collapsed) {
+    color: rgba(255, 255, 255, 0.96) !important;
+}
+
+body:not(.theme-light) .accordion-body {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
 /* Bootstrap Alert Overrides */
 .alert-info {
-    background-color: #1e3e62 !important;
+    background-color: var(--bg-secondary) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
+    color: inherit !important;
     border-radius: 8px !important;
+}
+
+/* Lighter text for alerts on dark-themed pages */
+body:not(.theme-light) .alert-info {
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 /* Bootstrap Badge Overrides */

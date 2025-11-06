@@ -19,12 +19,20 @@
   font-family: "Geist Mono", monospace;
 }
 
+body.theme-light .policy-title {
+  color: #0f172a;
+}
+
 .policy-content {
   line-height: 1.7;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.9);
   font-family: "Geist Mono", monospace;
   font-weight: 400;
+}
+
+body.theme-light .policy-content {
+  color: rgba(15, 23, 42, 0.9);
 }
 
 .policy-content h3 {
@@ -35,7 +43,185 @@
   font-family: "Geist Mono", monospace;
 }
 
+body.theme-light .policy-content h3 {
+  color: #0f172a;
+}
+
 .policy-content p {
   margin-bottom: 15px;
 }
 
+ 
+.policy-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  font-family: "Geist Mono", monospace;
+}
+
+body.theme-light .policy-subtitle {
+  color: #0f172a;
+}
+
+/* Search Components Styles - Header Version */
+.search-container-header {
+  position: relative;
+  width: 250px;
+}
+
+.search-input-header {
+  width: 250px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: 8px;
+  background: rgba(30, 58, 138, 0.5);
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Geist Mono", monospace;
+}
+
+body.theme-light .search-input-header {
+  background: #f2f4f8;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
+.search-input-header:focus {
+  outline: none;
+  border-color: rgba(217, 119, 6, 0.6);
+  background: rgba(30, 58, 138, 0.7);
+  box-shadow: 0 0 15px rgba(217, 119, 6, 0.2);
+  width: 300px;
+  transform: translateX(-50px);
+}
+
+.search-input-header::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+body.theme-light .search-input-header::placeholder {
+  color: rgba(15, 23, 42, 0.5);
+}
+
+/* Autocomplete Dropdown */
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(30, 58, 138, 0.95);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: 8px;
+  margin-top: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.autocomplete-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: "Geist Mono", monospace;
+}
+
+body.theme-light .autocomplete-item {
+  color: #0f172a;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.theme-light .autocomplete-list {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-item:hover {
+  background: rgba(217, 119, 6, 0.2);
+  color: #f59e0b;
+  padding-left: 25px;
+}
+
+/* Search Highlighting */
+.highlight {
+  background: linear-gradient(120deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.4) 100%);
+  color: #fbbf24;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.3);
+  animation: highlightPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(217, 119, 6, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.5);
+  }
+}
+
+/* Search Info Text */
+.search-info {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-style: italic;
+  animation: fadeIn 0.3s ease;
+}
+
+body.theme-light .search-info {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure search matched items are visible */
+.search-match {
+  display: block !important;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .search-container-header {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .search-input-header {
+    width: 100%;
+  }
+  .search-input-header:focus {
+    width: 100%;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .autocomplete-item {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+ 
