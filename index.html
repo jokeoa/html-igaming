@@ -16,9 +16,6 @@
   </head>
   <body class="theme-blue">
     <header>
-
-      
-
       <nav class="navbar navbar-expand-lg custom-header py-2">
         <div class="container-fluid px-2 px-lg-3">
           <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -37,10 +34,10 @@
                 <img src="public/GitHub.svg" alt="GitHub" class="github-icon">
                 GitHub
               </a>
-              <button class="btn btn-outline btn-sm px-3 py-1" onclick="openPopup()">
+              <button class="btn btn-outline" onclick="openPopup()">
                 Subscribe
               </button>
-              <a href="src/app/user-profile/page.html" class="btn btn-gradient btn-sm px-3 py-1">👤 Profile</a>
+              <a href="src/app/user-profile/page.html" class="btn btn-gradient">👤 Profile</a>
             </div>
           </div>
         </div>
@@ -138,132 +135,129 @@
           </div>
         </section>
 
+        <section class="newsletter-section">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-8">
+                <h2 class="newsletter-title text-center">Stay Updated</h2>
+                <p class="newsletter-subtitle text-center">Subscribe to receive updates about new games and features</p>
+                
+                <form id="stay-updated-form">
+                  <div class="mb-3">
+                    <input type="text" class="form-control newsletter-input" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control newsletter-input" placeholder="Enter your email" required>
+                  </div>
+                  <div class="mb-3">
+                    <input type="tel" class="form-control newsletter-input" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="personalDataCheckbox" required>
+                    <label class="form-check-label" for="personalDataCheckbox" style="color: rgba(255, 255, 255, 0.8);">
+                      I agree to the processing of my personal data
+                    </label>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" id="stay-updated-btn" class="btn btn-gradient">
+                      Subscribe
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
 
-
-<!-- TASK 6: Loading Spinner — форма как в проекте -->
-<section class="newsletter-section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8">
-        <h2 class="newsletter-title text-center">Stay Updated</h2>
-        <p class="newsletter-subtitle text-center">Subscribe to receive updates about new games and features</p>
-        
-        <form id="stay-updated-form">
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Enter your name" required>
+        <section class="games-section">
+          <div class="container py-5">
+            <h2 class="games-title">Featured Game Screenshots</h2>
+            <p class="text-center mb-4" style="color: rgba(255, 255, 255, 0.8);">Images load automatically as you scroll down</p>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/black-jack/BlackjackTable.jpg.webp" alt="Blackjack Table" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Blackjack Table</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional blackjack gaming table</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/roulette/roulette-wheel.jpg" alt="Roulette Wheel" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Roulette Wheel</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Classic casino roulette wheel</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/roulette/casino.jpg" alt="Casino Interior" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Casino Interior</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Luxurious casino atmosphere</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/roulette/golden-wheel.jpg" alt="Golden Wheel" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Golden Wheel</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Premium roulette experience</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/roulette/chips.jpg" alt="Casino Chips" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Casino Chips</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">High-quality gaming chips</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img class="lazy-load card-img-top" data-src="public/roulette/table.jpg" alt="Gaming Table" style="min-height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">Gaming Table</h5>
+                    <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional gaming setup</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Enter your email" required>
-          </div>
-          <div class="mb-3">
-            <input type="tel" class="form-control" placeholder="Enter your phone number" required>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="personalDataCheckbox" required>
-            <label class="form-check-label" for="personalDataCheckbox" style="color: rgba(255, 255, 255, 0.8);">
-              I agree to the processing of my personal data
-            </label>
-          </div>
-          <div class="text-center">
-            <button type="submit" id="stay-updated-btn" class="btn btn-gradient">
-              Subscribe
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="games-section">
-  <div class="container py-5">
-    <h2 class="games-title">Featured Game Screenshots</h2>
-    <p class="text-center mb-4" style="color: rgba(255, 255, 255, 0.8);">Images load automatically as you scroll down</p>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/black-jack/BlackjackTable.jpg.webp" alt="Blackjack Table" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Blackjack Table</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional blackjack gaming table</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/roulette/roulette-wheel.jpg" alt="Roulette Wheel" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Roulette Wheel</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Classic casino roulette wheel</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/roulette/casino.jpg" alt="Casino Interior" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Casino Interior</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Luxurious casino atmosphere</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/roulette/golden-wheel.jpg" alt="Golden Wheel" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Golden Wheel</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Premium roulette experience</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/roulette/chips.jpg" alt="Casino Chips" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Casino Chips</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">High-quality gaming chips</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="lazy-load card-img-top" data-src="public/roulette/table.jpg" alt="Gaming Table" style="min-height: 200px; background: rgba(255,255,255,0.1);">
-          <div class="card-body">
-            <h5 class="card-title" style="color: white;">Gaming Table</h5>
-            <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Professional gaming setup</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
       </main>
     </div>
 
-  <div class="stats-section py-5 text-center">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="stat-item">
-          <h3 class="counter" data-target="1250">0</h3>
-          <p>Active Players</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="stat-item">
-          <h3 class="counter" data-target="98">0</h3>
-          <p>% Uptime</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="stat-item">
-          <h3 class="counter" data-target="50">0</h3>
-          <p>Games Available</p>
+    <div class="stats-section py-5 text-center">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="stat-item">
+              <h3 class="counter" data-target="1250">0</h3>
+              <p>Active Players</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-item">
+              <h3 class="counter" data-target="98">0</h3>
+              <p>% Uptime</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-item">
+              <h3 class="counter" data-target="50">0</h3>
+              <p>Games Available</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <footer class="footer">
       <div class="footer-content">
@@ -294,7 +288,6 @@
       </div>
     </footer>
 
-    <!-- POPUP MODAL -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopupOnOutside(event)">
       <div class="popup-modal">
         <button class="popup-close" onclick="closePopup()">&times;</button>
@@ -318,14 +311,12 @@
       </div>
     </div>
 
-    <!-- THEME SWITCHER BUTTON -->
     <div class="theme-switcher">
       <button class="theme-btn" onclick="changeTheme()" title="Change Theme">
         🎨
       </button>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
     <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 11000;">
       <div id="greetingToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
@@ -338,11 +329,12 @@
       </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/theme-switcher.js"></script>
     <script src="src/js/index.js"></script>
     <script src="src/js/main-scripts.js"></script>
-
+    
   </body>
 </html>
+
+
