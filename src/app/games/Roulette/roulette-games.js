@@ -1,46 +1,3 @@
-// jQuery Toast Notification Function
-function showToast(title, message, type) {
-    const $toast = $('#toastNotification');
-    const $title = $('#toastTitle');
-    const $message = $('#toastMessage');
-    
-    // Remove all type classes
-    $toast.removeClass('toast-win toast-lose toast-start hiding');
-    
-    // Add appropriate class based on type
-    $toast.addClass('toast-' + type);
-    
-    // Set content
-    $title.text(title);
-    $message.text(message);
-    
-    // Show toast
-    $toast.fadeIn(300);
-    
-    // Auto hide after 3 seconds
-    setTimeout(() => {
-        $toast.addClass('hiding');
-        setTimeout(() => {
-            $toast.fadeOut(300, () => {
-                $toast.removeClass('hiding');
-            });
-        }, 300);
-    }, 3000);
-}
-
-// Close toast on button click
-$(document).ready(function() {
-    $('#toastClose').on('click', function() {
-        const $toast = $('#toastNotification');
-        $toast.addClass('hiding');
-        setTimeout(() => {
-            $toast.fadeOut(300, () => {
-                $toast.removeClass('hiding');
-            });
-        }, 300);
-    });
-});
-
 class RouletteGame {
     constructor() {
         this.numbers = Array.from({length: 37}, (_, i) => i);
@@ -66,18 +23,26 @@ class RouletteGame {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const angleStep = (Math.PI * 2) / 37;
 
+         // Theme-aware colors for readability
+        const computedStyle = getComputedStyle(document.body);
+        const gold = '#ffd700';
+        const black = '#000000';
+        const white = computedStyle.color || '#ffffff';
+        const red = '#e0080b';
+        const green = '#016d29';
+
         this.numbers.forEach((num, index) => {
             const startAngle = index * angleStep;
             const endAngle = (index + 1) * angleStep;
             const isZero = num === 0;
             const isRed = !isZero && [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36].includes(num);
-            ctx.fillStyle = isZero ? '#016d29' : (isRed ? '#e0080b' : '#000');
+            ctx.fillStyle = isZero ? green : (isRed ? red : black);
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);
             ctx.arc(centerX, centerY, radius, startAngle, endAngle);
             ctx.closePath();
             ctx.fill();
-            ctx.strokeStyle = '#ffd700';
+            ctx.strokeStyle = gold;
             ctx.lineWidth = 2;
             ctx.stroke();
             ctx.save();
@@ -85,7 +50,8 @@ class RouletteGame {
             ctx.rotate(startAngle + angleStep / 2);
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillStyle = 'white';
+            // Ensure readable text on both light/dark themes
+            ctx.fillStyle = white;
             ctx.font = num === 0 ? 'bold 22px Geist' : 'bold 18px Geist';
             ctx.shadowColor = 'rgba(0,0,0,0.5)';
             ctx.shadowBlur = 4;
@@ -95,9 +61,9 @@ class RouletteGame {
 
         ctx.beginPath();
         ctx.arc(centerX, centerY, 25, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffd700';
+        ctx.fillStyle = gold;
         ctx.fill();
-        ctx.strokeStyle = '#000';
+        ctx.strokeStyle = black;
         ctx.lineWidth = 3;
         ctx.stroke();
         ctx.fillStyle = 'rgba(255,215,0,0.9)';
@@ -127,10 +93,6 @@ class RouletteGame {
         btn.disabled = true;
         btn.style.opacity = '0.7';
         document.getElementById('resultMessage').textContent = 'SPINNING...';
-        
-        // Show toast for game start
-        showToast('Spinning the Wheel! 🎰', 'Good luck! Watch the wheel spin...', 'start');
-        
         const spins = 5 + Math.random() * 3;
         const finalRotation = spins * 360 + Math.random() * 360;
 
@@ -157,18 +119,7 @@ class RouletteGame {
         const resultIndex = Math.floor(normalizedRad / angleStep) % 37;
         const result = this.numbers[resultIndex];
         document.getElementById('resultMessage').textContent = `Result: ${result}`;
-        
-        // Randomly determine win/loss for demo purposes
-        const isWin = Math.random() > 0.5;
-        this.playSound(isWin ? 'win' : 'lose');
-        
-        // Show toast based on outcome
-        if (isWin) {
-            showToast('You Won! 🎉', `The ball landed on ${result}! Congratulations!`, 'win');
-        } else {
-            showToast('Better Luck Next Time! 😔', `The ball landed on ${result}. Try again!`, 'lose');
-        }
-        
+        this.playSound(Math.random() > 0.5 ? 'win' : 'lose');
         document.getElementById('spinBtn').disabled = false;
         document.getElementById('spinBtn').style.opacity = '1';
         this.isSpinning = false;
