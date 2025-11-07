@@ -1,0 +1,95 @@
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  display: none;
+  animation: slideInRight 0.3s ease;
+}
+
+.toast-notification.toast-win {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.toast-notification.toast-lose {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.toast-notification.toast-start {
+  background: linear-gradient(135deg, #ff6500, #ff8434);
+  color: white;
+}
+
+.toast-notification.toast-push {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.toast-notification.hiding {
+  animation: slideOutRight 0.3s ease;
+}
+
+.toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.toast-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+.toast-message {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+

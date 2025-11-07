@@ -1,10 +1,4 @@
-/* User Profile Page Styles */
-
-.profile-main {
-  min-height: calc(100vh - 200px);
-  padding: 2rem 0;
-}
-
+/* Profile specific styles */
 .profile-container {
   max-width: 800px;
   margin: 0 auto;
@@ -20,7 +14,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff6b35, #ff8434);
+  background: linear-gradient(135deg, var(--accent-color), #ff8434);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,6 +34,70 @@
   font-weight: 700;
   color: white;
   margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.copy-btn-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.copy-btn.copied {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: #10b981;
+}
+
+.copy-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+}
+
+.copy-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
 }
 
 .profile-email {
@@ -134,15 +192,5 @@
 
   .profile-actions {
     grid-template-columns: 1fr;
-  }
-
-  .profile-avatar {
-    width: 100px;
-    height: 100px;
-    font-size: 40px;
-  }
-
-  .profile-name {
-    font-size: 1.5rem;
   }
 }

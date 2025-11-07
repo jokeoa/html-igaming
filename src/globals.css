@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-/* THEME VARIABLES */
+/* THEME VARIABLES - WCAG AA Compliant */
 body.theme-blue {
     --bg-primary: #052c65;
     --bg-secondary: #1e3e62;
@@ -15,7 +15,12 @@ body.theme-blue {
     --bg-header: #1a2332;
     --bg-gradient-start: #0b192c;
     --bg-gradient-end: #173763;
-    --accent-color: #ff6b35;
+    --accent-color: #ff7849;
+    /* Text colors for WCAG AA compliance */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.87);
+    --text-subtle: rgba(255, 255, 255, 0.75);
 }
 
 body.theme-purple {
@@ -25,7 +30,12 @@ body.theme-purple {
     --bg-header: #1f1535;
     --bg-gradient-start: #1a0b2e;
     --bg-gradient-end: #4a2b7c;
-    --accent-color: #b794f6;
+    --accent-color: #c7a8ff;
+    /* Text colors for WCAG AA compliance */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.87);
+    --text-subtle: rgba(255, 255, 255, 0.75);
 }
 
 body.theme-green {
@@ -35,7 +45,12 @@ body.theme-green {
     --bg-header: #0a2820;
     --bg-gradient-start: #0d1f1a;
     --bg-gradient-end: #2a6351;
-    --accent-color: #4ade80;
+    --accent-color: #5effa3;
+    /* Text colors for WCAG AA compliance */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.87);
+    --text-subtle: rgba(255, 255, 255, 0.75);
 }
 
 body.theme-red {
@@ -45,7 +60,12 @@ body.theme-red {
     --bg-header: #2a0f0f;
     --bg-gradient-start: #1f0d0d;
     --bg-gradient-end: #632a2a;
-    --accent-color: #f87171;
+    --accent-color: #ff8989;
+    /* Text colors for WCAG AA compliance */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.87);
+    --text-subtle: rgba(255, 255, 255, 0.75);
 }
 
 /* Default Theme */
@@ -56,7 +76,12 @@ body {
     --bg-header: #1a2332;
     --bg-gradient-start: #0b192c;
     --bg-gradient-end: #173763;
-    --accent-color: #ff6b35;
+    --accent-color: #ff7849;
+    /* Text colors for WCAG AA compliance */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.95);
+    --text-muted: rgba(255, 255, 255, 0.87);
+    --text-subtle: rgba(255, 255, 255, 0.75);
     
     font-family: 'Geist', sans-serif;
     background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
@@ -130,7 +155,7 @@ body {
 .sidebar-link {
     font-family: 'Geist', sans-serif;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-muted);
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 6px;
@@ -140,7 +165,7 @@ body {
 
 .sidebar-link:hover {
     background-color: #1e3e62;
-    color: white;
+    color: var(--text-primary);
 }
 
 /* Button Styles */
@@ -208,13 +233,13 @@ body {
 .custom-header .navbar-brand,
 .custom-header .nav-link,
 .custom-header .navbar-text {
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: var(--text-secondary) !important;
 }
 
 .custom-header .nav-link.active,
 .custom-header .nav-link:hover,
 .custom-header .navbar-brand:hover {
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
 }
 
 .header-content {
@@ -277,13 +302,13 @@ body {
 
 .nav-link {
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .nav-link:hover {
-    color: white;
+    color: var(--text-primary);
 }
 
 .header-right {
@@ -409,7 +434,7 @@ body {
 .card-text {
     font-family: 'Geist', sans-serif !important;
     font-size: 16px !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-muted) !important;
     line-height: 1.5 !important;
 }
 
@@ -453,7 +478,7 @@ body {
 
 .accordion-body {
     background-color: #0f2a44 !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-muted) !important;
     font-family: 'Geist', sans-serif !important;
     border-radius: 0 0 8px 8px !important;
 }
@@ -480,7 +505,7 @@ body {
 
 .badge.bg-warning {
     background-color: #ffc107 !important;
-    color: #000 !important;
+    color: #1a1a1a !important;
 }
 
 .badge.bg-secondary {
@@ -517,21 +542,21 @@ body {
 /* Bootstrap Form Overrides */
 .form-control {
     background-color: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: var(--text-primary) !important;
     font-family: 'Geist', sans-serif !important;
     padding: 12px 16px !important;
 }
 
 .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: var(--text-subtle) !important;
 }
 
 .form-control:focus {
     background-color: rgba(255, 255, 255, 0.15) !important;
-    border-color: #ff6500 !important;
-    box-shadow: none !important;
-    color: white !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 120, 73, 0.25) !important;
+    color: var(--text-primary) !important;
 }
 
 
@@ -580,7 +605,7 @@ body {
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: var(--text-muted) !important;
     transition: color 0.3s ease;
 }
 
@@ -597,7 +622,7 @@ body {
 }
 
 .footer-link {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -607,7 +632,7 @@ body {
 }
 
 .footer-description {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-subtle);
 }
 
 /* Card styling with theme support */
