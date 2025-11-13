@@ -100,6 +100,63 @@
             margin-top: 2rem;
         }
 
+        .wallet-panel {
+            margin: 2rem auto 0;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .wallet-balance {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .wallet-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .wallet-controls label {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .wallet-controls input,
+        .wallet-controls select {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+        }
+
+        .wallet-controls input:focus,
+        .wallet-controls select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 120, 73, 0.2);
+            outline: none;
+        }
+
+        .wallet-error {
+            color: #ffb4a2;
+            margin-top: 0.5rem;
+            display: none;
+            text-align: center;
+        }
+
         .btn {
             padding: 1rem 2rem;
             border: none;
@@ -192,7 +249,19 @@
                 <li class="nav-item"><a class="nav-link" href="../../about/page.html">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../faq/page.html">FAQ</a></li>
               </ul>
-              <div class="d-flex align-items-center gap-2">
+              <div class="d-flex align-items-center gap-3 flex-wrap justify-content-end">
+                <div class="user-widget">
+                  <div class="user-meta">
+                    <span class="user-nickname" id="userNicknameDisplay">Guest</span>
+                    <span class="user-balance">
+                      Balance: <span id="userBalanceDisplay">0</span> tokens
+                    </span>
+                  </div>
+                  <div class="user-action-buttons">
+                    <button class="btn-link-underline" type="button" onclick="openUserSettingsModal()">Edit</button>
+                    <button class="btn-token" type="button" onclick="openTopUpModal()">+ Tokens</button>
+                  </div>
+                </div>
                 <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
                   <img src="../../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
                   GitHub
@@ -218,6 +287,25 @@
             </div>
         </div>
 
+        <div class="wallet-panel">
+            <div class="wallet-balance">
+                Balance: <span id="rouletteTokenBalance">0</span> tokens
+            </div>
+            <div class="wallet-controls">
+                <label for="rouletteBetAmount">Bet amount</label>
+                <input type="number" id="rouletteBetAmount" min="1" max="10000" step="1" value="50">
+            </div>
+            <div class="wallet-controls">
+                <label for="rouletteBetChoice">Bet on color</label>
+                <select id="rouletteBetChoice">
+                    <option value="red">Red (2x)</option>
+                    <option value="black">Black (2x)</option>
+                    <option value="green">Green (15x)</option>
+                </select>
+            </div>
+            <div class="wallet-error" id="rouletteBetError">Enter a valid bet within your balance.</div>
+        </div>
+
         <div class="spin-buttons">
             <button id="spinBtn" class="btn btn-primary">SPIN ROULETTE</button>
             <button id="quickSpin" class="btn btn-secondary">Quick Spin</button>
@@ -230,9 +318,73 @@
     </button>
     </div>
 
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 11000;">
+      <div id="greetingToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+          <strong class="me-auto" id="toastTitle">Welcome!</strong>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastMessage" style="background-color: var(--bg-secondary); color: white;">
+          Ready to spin the wheel?
+        </div>
+      </div>
+    </div>
+
+    <!-- USER SETTINGS MODAL -->
+    <div class="modal fade" id="userSettingsModal" tabindex="-1" aria-labelledby="userSettingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="userSettingsModalLabel">Your Casino Profile</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="userSettingsForm">
+              <div class="mb-3">
+                <label for="userNicknameInput" class="form-label">Nickname</label>
+                <input type="text" class="form-control" id="userNicknameInput" required minlength="3" maxlength="20" />
+                <div class="form-text text-light">Pick any nickname you like. This stays on your device.</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-gradient" onclick="saveUserSettings()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP-UP MODAL -->
+    <div class="modal fade" id="topUpModal" tabindex="-1" aria-labelledby="topUpModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="topUpModalLabel">Add Tokens</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="topUpForm">
+              <div class="mb-3">
+                <label for="topUpAmountInput" class="form-label">Token amount</label>
+                <input type="number" class="form-control" id="topUpAmountInput" min="1" max="10000" step="1" value="100" required />
+                <div class="form-text text-light">Tokens stay in your browser. Use them to play.</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-gradient" onclick="submitTopUp()">Add tokens</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../js/theme-switcher.js"></script>
+    <script src="../../../js/index.js"></script>
     <script src="roulette-games.js"></script>
 </body>
 </html>

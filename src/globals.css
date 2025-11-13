@@ -286,6 +286,87 @@ body.theme-light [style*="color:rgba(255, 255, 255"] {
     color: var(--text-primary);
 }
 
+/* User widget */
+.user-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-light .user-widget {
+    background: rgba(15, 23, 42, 0.08);
+}
+
+.user-widget .user-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-widget .user-nickname {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+body.theme-light .user-widget .user-nickname {
+    color: #0f172a;
+}
+
+.user-widget .user-balance {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+}
+
+body.theme-light .user-widget .user-balance {
+    color: rgba(15, 23, 42, 0.7);
+}
+
+.user-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-token {
+    background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+    border: none;
+    color: white;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-token:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    color: white;
+}
+
+.btn-link-underline {
+    background: none;
+    border: none;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+    text-decoration: underline;
+}
+
+.btn-link-underline:hover {
+    color: var(--text-primary);
+}
+
+body.theme-light .btn-link-underline {
+    color: rgba(15, 23, 42, 0.7);
+}
+
+body.theme-light .btn-link-underline:hover {
+    color: #0f172a;
+}
+
 /* Button Styles */
 .btn {
     display: flex;
