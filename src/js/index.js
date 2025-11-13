@@ -30,6 +30,21 @@ function handleSubmit(event) {
   closePopup();
 }
 
+function handleFooterSubmit(event) {
+  event.preventDefault();
+  const name = document.getElementById('footer-name').value;
+  const email = document.getElementById('footer-email').value;
+  const message = document.getElementById('footer-message').value;
+  
+  alert(`Thank you for subscribing, ${name}!\nWe'll send updates to ${email}`);
+  
+  // Reset form
+  event.target.reset();
+  
+  // Scroll to top of footer to show success
+  document.querySelector('.footer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 // Close popup with Escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {

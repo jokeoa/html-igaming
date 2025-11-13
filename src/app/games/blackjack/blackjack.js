@@ -11,6 +11,7 @@ let deck = [];
 let playerHand = [];
 let dealerHand = [];
 let gameState = 'bet';
+let currentBet = 0;
 
 // jQuery Toast Notification Function
 function showToast(title, message, type) {
@@ -61,6 +62,7 @@ const elements = {
   playerScore: document.getElementById('playerScore'),
   dealerScore: document.getElementById('dealerScore'),
   gameMessage: document.getElementById('gameMessage'),
+  gameMessageText: document.getElementById('gameMessageText'),
 
   betStage: document.getElementById('betStage'),
   gameStage: document.getElementById('gameStage'),
@@ -96,7 +98,7 @@ function dealCard() {
 
 function createCardElement(card, hidden = false) {
   const cardDiv = document.createElement('div');
-  cardDiv.className = 'card';
+  cardDiv.className = 'playing-card';
 
   if (hidden) {
     cardDiv.classList.add('back');
@@ -151,37 +153,79 @@ function renderHand(hand, container, hideFirst = false) {
 
 function updateScores(revealDealer = false) {
   const playerScore = calculateScore(playerHand);
-  elements.playerScore.textContent = `Score: ${playerScore}`;
+  if (elements.playerScore) {
+    elements.playerScore.textContent = `Score: ${playerScore}`;
+  }
 
   if (revealDealer) {
     const dealerScore = calculateScore(dealerHand);
-    elements.dealerScore.textContent = `Score: ${dealerScore}`;
+    if (elements.dealerScore) {
+      elements.dealerScore.textContent = `Score: ${dealerScore}`;
+    }
   } else {
-    elements.dealerScore.textContent = dealerHand.length > 0 ? 'Score: ?' : '';
+    if (elements.dealerScore) {
+      elements.dealerScore.textContent = dealerHand.length > 0 ? 'Score: ?' : '';
+    }
   }
 }
 
 function showMessage(text, type) {
-  elements.gameMessage.textContent = text;
-  elements.gameMessage.className = `message ${type}`;
-  elements.gameMessage.style.display = 'block';
+  if (!elements.gameMessage || !elements.gameMessageText) return;
+  
+  elements.gameMessageText.textContent = text;
+  
+  // Remove all alert classes
+  elements.gameMessage.classList.remove('alert-success', 'alert-danger', 'alert-warning', 'd-none');
+  
+  // Add appropriate Bootstrap alert class
+  if (type === 'win') {
+    elements.gameMessage.classList.add('alert-success');
+  } else if (type === 'lose') {
+    elements.gameMessage.classList.add('alert-danger');
+  } else {
+    elements.gameMessage.classList.add('alert-warning');
+  }
+  
+  // Show the alert
+  elements.gameMessage.classList.remove('d-none');
+  
+  // Auto-hide after 5 seconds
+  setTimeout(() => {
+    hideMessage();
+  }, 5000);
 }
 
 function hideMessage() {
-  elements.gameMessage.style.display = 'none';
+  if (elements.gameMessage) {
+    elements.gameMessage.classList.add('d-none');
+  }
 }
 
 function switchStage(stage) {
-  elements.betStage.style.display = 'none';
-  elements.gameStage.style.display = 'none';
-  elements.postGameStage.style.display = 'none';
+  // Hide all stages using Bootstrap classes
+  if (elements.betStage) {
+    elements.betStage.classList.remove('d-block');
+    elements.betStage.classList.add('d-none');
+  }
+  if (elements.gameStage) {
+    elements.gameStage.classList.remove('d-block');
+    elements.gameStage.classList.add('d-none');
+  }
+  if (elements.postGameStage) {
+    elements.postGameStage.classList.remove('d-block');
+    elements.postGameStage.classList.add('d-none');
+  }
 
-  if (stage === 'bet') {
-    elements.betStage.style.display = 'block';
-  } else if (stage === 'playing') {
-    elements.gameStage.style.display = 'block';
-  } else if (stage === 'finished') {
-    elements.postGameStage.style.display = 'block';
+  // Show the appropriate stage
+  if (stage === 'bet' && elements.betStage) {
+    elements.betStage.classList.remove('d-none');
+    elements.betStage.classList.add('d-block');
+  } else if (stage === 'playing' && elements.gameStage) {
+    elements.gameStage.classList.remove('d-none');
+    elements.gameStage.classList.add('d-block');
+  } else if (stage === 'finished' && elements.postGameStage) {
+    elements.postGameStage.classList.remove('d-none');
+    elements.postGameStage.classList.add('d-block');
   }
 
   gameState = stage;
@@ -193,10 +237,53 @@ function canSplit() {
 }
 
 function checkSplitAvailable() {
-  elements.splitBtn.style.display = canSplit() ? 'inline-block' : 'none';
+  if (elements.splitBtn) {
+    if (canSplit()) {
+      elements.splitBtn.classList.remove('d-none');
+      elements.splitBtn.style.display = 'inline-block';
+    } else {
+      elements.splitBtn.classList.add('d-none');
+      elements.splitBtn.style.display = 'none';
+    }
+  }
 }
 
 function startGame() {
+  // Get bet amount
+  const betInput = document.getElementById('betAmount');
+  const betAmount = parseFloat(betInput.value) || 10;
+  
+  // Check if user can afford the bet
+  if (!BalanceManager.canAfford(betAmount)) {
+    showToast('Insufficient Balance', 'Please deposit more funds to play.', 'lose');
+    return;
+  }
+  
+  // Deduct bet from balance
+  currentBet = betAmount;
+  BalanceManager.subtractBalance(betAmount);
+  
+  // Force update balance display
+  const balance = BalanceManager.getBalance() || 0;
+  BalanceManager.updateBalanceDisplay();
+  
+  // Explicitly update balance elements
+  const userBalanceEl = document.getElementById('userBalance');
+  if (userBalanceEl) {
+    userBalanceEl.textContent = '$' + balance.toFixed(2);
+  }
+  
+  // Update nav balance
+  const navBalance = document.getElementById('userBalanceNav');
+  if (navBalance) {
+    navBalance.textContent = '$' + balance.toFixed(2);
+  }
+  
+  // Also update via jQuery if available
+  if (typeof $ !== 'undefined') {
+    $('.user-balance, #userBalance').text('$' + balance.toFixed(2));
+  }
+  
   hideMessage();
   createDeck();
   playerHand = [];
@@ -207,15 +294,15 @@ function startGame() {
   playerHand.push(dealCard());
   dealerHand.push(dealCard());
 
-  renderHand(playerHand, elements.playerCards);
-  renderHand(dealerHand, elements.dealerCards, true);
+  if (elements.playerCards) renderHand(playerHand, elements.playerCards);
+  if (elements.dealerCards) renderHand(dealerHand, elements.dealerCards, true);
   updateScores();
 
   switchStage('playing');
   checkSplitAvailable();
 
   // Show toast for game start
-  showToast('Game Started!', 'Good luck! Try to get 21 without going over.', 'start');
+  showToast('Game Started!', `Bet placed: $${betAmount.toFixed(2)}. Good luck!`, 'start');
 
   if (calculateScore(playerHand) === 21) {
     stand();
@@ -224,10 +311,13 @@ function startGame() {
 
 function hit() {
   playerHand.push(dealCard());
-  renderHand(playerHand, elements.playerCards);
+  if (elements.playerCards) renderHand(playerHand, elements.playerCards);
   updateScores();
 
-  elements.splitBtn.style.display = 'none';
+  if (elements.splitBtn) {
+    elements.splitBtn.classList.add('d-none');
+    elements.splitBtn.style.display = 'none';
+  }
 
   const playerScore = calculateScore(playerHand);
   if (playerScore > 21) {
@@ -238,13 +328,13 @@ function hit() {
 }
 
 function stand() {
-  renderHand(dealerHand, elements.dealerCards);
+  if (elements.dealerCards) renderHand(dealerHand, elements.dealerCards);
   updateScores(true);
 
   // Dealer <17
   while (calculateScore(dealerHand) < 17) {
     dealerHand.push(dealCard());
-    renderHand(dealerHand, elements.dealerCards);
+    if (elements.dealerCards) renderHand(dealerHand, elements.dealerCards);
     updateScores(true);
   }
 
@@ -272,29 +362,94 @@ function endGame(result, message) {
   showMessage(message, result === 'win' ? 'win' : result === 'lose' ? 'lose' : 'push');
   switchStage('finished');
   
-  // Show toast based on game outcome
+  // Handle balance updates based on game result
+  let balanceChange = 0;
+  let finalBalance = 0;
+  
   if (result === 'win') {
-    showToast('You Won! 🎉', message, 'win');
+    // Win: get bet back + win amount (2x bet)
+    balanceChange = currentBet * 2;
+    BalanceManager.addBalance(balanceChange);
+    finalBalance = BalanceManager.getBalance() || 0;
+    showToast('You Won! 🎉', `${message} You won $${balanceChange.toFixed(2)}!`, 'win');
   } else if (result === 'lose') {
-    showToast('You Lost 😔', message, 'lose');
+    // Lose: bet already deducted, show loss
+    finalBalance = BalanceManager.getBalance() || 0;
+    showToast('You Lost 😔', `${message} You lost $${currentBet.toFixed(2)}.`, 'lose');
   } else {
-    showToast('Push! 🤝', message, 'push');
+    // Push: return bet
+    balanceChange = currentBet;
+    BalanceManager.addBalance(balanceChange);
+    finalBalance = BalanceManager.getBalance() || 0;
+    showToast('Push! 🤝', `${message} Your bet of $${currentBet.toFixed(2)} was returned.`, 'push');
   }
+  
+  // Force update balance display after result
+  BalanceManager.updateBalanceDisplay();
+  
+  // Explicitly update balance elements
+  const userBalanceEl = document.getElementById('userBalance');
+  if (userBalanceEl) {
+    userBalanceEl.textContent = '$' + finalBalance.toFixed(2);
+  }
+  
+  // Update nav balance
+  const navBalance = document.getElementById('userBalanceNav');
+  if (navBalance) {
+    navBalance.textContent = '$' + finalBalance.toFixed(2);
+  }
+  
+  // Also update via jQuery if available
+  if (typeof $ !== 'undefined') {
+    $('.user-balance, #userBalance').text('$' + finalBalance.toFixed(2));
+  }
+  
+  currentBet = 0;
 }
 
 function playAgain() {
-  elements.playerCards.innerHTML = '';
-  elements.dealerCards.innerHTML = '';
-  elements.playerScore.textContent = '';
-  elements.dealerScore.textContent = '';
+  if (elements.playerCards) elements.playerCards.innerHTML = '';
+  if (elements.dealerCards) elements.dealerCards.innerHTML = '';
+  if (elements.playerScore) elements.playerScore.textContent = '';
+  if (elements.dealerScore) elements.dealerScore.textContent = '';
   hideMessage();
+  currentBet = 0;
   switchStage('bet');
 }
 
-elements.placeBetBtn.addEventListener('click', startGame);
-elements.hitBtn.addEventListener('click', hit);
-elements.standBtn.addEventListener('click', stand);
-elements.splitBtn.addEventListener('click', split);
-elements.playAgainBtn.addEventListener('click', playAgain);
+// Initialize game when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize balance display
+  if (typeof BalanceManager !== 'undefined') {
+    BalanceManager.updateBalanceDisplay();
+    
+    // Quick bet buttons
+    document.querySelectorAll('.bet-quick-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const amount = parseFloat(this.getAttribute('data-amount'));
+        const betInput = document.getElementById('betAmount');
+        if (betInput) betInput.value = amount;
+      });
+    });
+  }
 
-switchStage('bet');
+  // Add event listeners only if elements exist
+  if (elements.placeBetBtn) {
+    elements.placeBetBtn.addEventListener('click', startGame);
+  }
+  if (elements.hitBtn) {
+    elements.hitBtn.addEventListener('click', hit);
+  }
+  if (elements.standBtn) {
+    elements.standBtn.addEventListener('click', stand);
+  }
+  if (elements.splitBtn) {
+    elements.splitBtn.addEventListener('click', split);
+  }
+  if (elements.playAgainBtn) {
+    elements.playAgainBtn.addEventListener('click', playAgain);
+  }
+
+  // Initialize game stage
+  switchStage('bet');
+});

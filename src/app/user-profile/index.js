@@ -1,5 +1,11 @@
 // jQuery Copy to Clipboard functionality
 $(document).ready(function() {
+  // Update user name from cookies if available
+  if (typeof BalanceManager !== 'undefined') {
+    const userName = BalanceManager.getUserName() || 'Guest User';
+    $('#userName').text(userName);
+  }
+
   $('#copyBtn').on('click', function() {
     const userName = $('#userName').text();
     const $btn = $(this);
