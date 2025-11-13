@@ -50,7 +50,7 @@
       .profile-name {
         font-size: 2rem;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 0.5rem;
         display: inline-block;
       }
@@ -61,11 +61,11 @@
         gap: 0.5rem;
         position: relative;
       }
-      
-      .copy-btn {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
+
+      .copy-btn, .edit-btn {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
         padding: 0.5rem 0.75rem;
         border-radius: 8px;
         cursor: pointer;
@@ -74,17 +74,91 @@
         display: inline-flex;
         align-items: center;
         gap: 0.3rem;
+        white-space: nowrap;
+        user-select: none;
       }
-      
-      .copy-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
+
+      .copy-btn:hover, .edit-btn:hover {
+        background: var(--bg-secondary);
         border-color: var(--accent-color);
+        color: var(--accent-color);
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
       
+      body.theme-dark .copy-btn:hover, 
+      body.theme-dark .edit-btn:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .copy-btn:active, .edit-btn:active {
+        transform: translateY(0);
+      }
+
       .copy-btn.copied {
         background: linear-gradient(135deg, #10b981, #059669);
         border-color: #10b981;
+        color: white;
+      }
+
+      .edit-btn.editing {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border-color: #3b82f6;
+        color: white;
+      }
+
+      body.theme-light .copy-btn, 
+      body.theme-light .edit-btn {
+        background: rgba(15, 23, 42, 0.1);
+        border-color: rgba(15, 23, 42, 0.2);
+        color: #0f172a;
+      }
+
+      body.theme-light .copy-btn:hover, 
+      body.theme-light .edit-btn:hover {
+        background: rgba(15, 23, 42, 0.2);
+        border-color: var(--accent-color);
+      }
+
+      body.theme-light .copy-btn.copied {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+      }
+
+      body.theme-light .edit-btn.editing {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+      }
+
+      .edit-input {
+        background: var(--bg-secondary);
+        border: 2px solid var(--accent-color);
+        color: var(--text-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        max-width: 300px;
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+      }
+
+      .edit-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        background: var(--bg-tertiary);
+      }
+
+      body.theme-light .edit-input {
+        background: rgba(15, 23, 42, 0.1);
+        border-color: var(--accent-color);
+        color: #0f172a;
+      }
+
+      body.theme-light .edit-input:focus {
+        background: rgba(15, 23, 42, 0.15);
       }
       
       .copy-tooltip {
@@ -92,8 +166,9 @@
         bottom: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
         padding: 0.5rem 1rem;
         border-radius: 6px;
         font-size: 0.85rem;
@@ -102,6 +177,7 @@
         pointer-events: none;
         transition: opacity 0.3s ease;
         margin-bottom: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
       
       .copy-tooltip.show {
@@ -115,7 +191,7 @@
         left: 50%;
         transform: translateX(-50%);
         border: 5px solid transparent;
-        border-top-color: rgba(0, 0, 0, 0.9);
+        border-top-color: var(--bg-primary);
       }
 
       .deposit-section {
@@ -124,21 +200,21 @@
 
       .deposit-card {
         background: var(--bg-secondary);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 2rem;
         text-align: center;
       }
 
       .deposit-title {
-        color: white;
+        color: var(--text-primary);
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
       }
 
       .deposit-description {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-secondary);
         font-size: 0.95rem;
         margin-bottom: 1.5rem;
       }
@@ -151,9 +227,9 @@
       }
 
       .deposit-btn {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
         padding: 0.75rem 1rem;
         border-radius: 8px;
         cursor: pointer;
@@ -178,22 +254,22 @@
 
       .custom-amount-input {
         flex: 1;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
         border-radius: 8px;
         padding: 0.75rem 1rem;
-        color: white;
+        color: var(--text-primary);
         font-size: 1rem;
       }
 
       .custom-amount-input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--text-muted);
       }
 
       .custom-amount-input:focus {
         outline: none;
         border-color: var(--accent-color);
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--bg-tertiary);
       }
 
       body.theme-light .deposit-title {
@@ -205,15 +281,19 @@
       }
 
       body.theme-light .deposit-btn {
-        background: rgba(15, 23, 42, 0.1);
-        border-color: rgba(15, 23, 42, 0.2);
-        color: #0f172a;
+        background: var(--bg-tertiary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
       }
 
       body.theme-light .custom-amount-input {
-        background: rgba(15, 23, 42, 0.1);
-        border-color: rgba(15, 23, 42, 0.2);
-        color: #0f172a;
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+      }
+      
+      body.theme-light .custom-amount-input::placeholder {
+        color: var(--text-muted);
       }
 
       .profile-stats {
@@ -225,7 +305,7 @@
 
       .stat-card {
         background: var(--bg-secondary);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 1.5rem;
         text-align: center;
@@ -236,6 +316,10 @@
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       }
+      
+      body.theme-dark .stat-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
 
       .stat-number {
         font-size: 2rem;
@@ -245,7 +329,7 @@
       }
 
       .stat-label {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-secondary);
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -260,7 +344,7 @@
 
       .action-card {
         background: var(--bg-secondary);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 1.5rem;
         text-align: center;
@@ -273,6 +357,10 @@
         border-color: var(--accent-color);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       }
+      
+      body.theme-dark .action-card:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
 
       .action-icon {
         font-size: 2rem;
@@ -281,13 +369,13 @@
       }
 
       .action-title {
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         margin-bottom: 0.5rem;
       }
 
       .action-description {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-secondary);
         font-size: 0.9rem;
       }
 
@@ -345,7 +433,6 @@
             </ul>
             <div class="d-flex align-items-center gap-2">
               <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
-                <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
                 GitHub
               </a>
               <a href="../catalog/page.html" class="btn btn-primary btn-sm px-3 py-1">Play games</a>
@@ -391,6 +478,10 @@
           <div class="profile-avatar">👤</div>
           <div class="copy-btn-container">
             <h1 class="profile-name" id="userName">Guest User</h1>
+            <button class="edit-btn" id="editBtn">
+              <span id="editIcon">✏️</span>
+              <span id="editText">Edit</span>
+            </button>
             <button class="copy-btn" id="copyBtn">
               <span id="copyIcon">📋</span>
               <span id="copyText">Copy</span>
