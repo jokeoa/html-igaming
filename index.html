@@ -897,15 +897,22 @@ body.theme-light .toast-body[style*="color: white"] {
               <li class="nav-item"><a class="nav-link" href="src/app/faq/page.html">FAQ</a></li>
             </ul>
             <div class="d-flex align-items-center gap-2">
-              <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline">
-                <img src="public/GitHub.svg" alt="GitHub" class="github-icon">
-                GitHub
-              </a>
-              <button class="btn btn-outline btn-sm px-3 py-1" onclick="openPopup()">
-                Subscribe
-              </button>
-              <a href="src/app/user-profile/page.html" class="btn btn-gradient btn-sm px-3 py-1">👤 Profile</a>
-            </div>
+                <!-- GitHub -->
+                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                  <img src="public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;">
+                  GitHub
+                </a>
+
+                <!-- Subscribe -->
+                <button class="btn btn-outline btn-sm px-3 py-1" onclick="openPopup()">
+                  Subscribe
+                </button>
+
+                <!-- Profile -->
+                <a href="src/app/user-profile/page.html" class="btn btn-gradient btn-sm px-3 py-1" style="height: 31px;width: 100px;">
+                  Profile
+                </a>
+              </div>
           </div>
         </div>
       </nav>
@@ -918,7 +925,7 @@ body.theme-light .toast-body[style*="color: white"] {
           <ul class="sidebar-menu mb-4">
             <li><a href="src/app/catalog/page.html" class="sidebar-link">All Games</a></li>
             <li><a href="src/app/game-page/page.html" class="sidebar-link">Blackjack</a></li>
-            <li><a href="404.html" class="sidebar-link">Poker</a></li>
+            <li><a href="src/app/game-page/poker.html" class="sidebar-link">Poker</a></li>
             <li><a href="src/app/game-page/roulette.html" class="sidebar-link">Roulette</a></li>
           </ul>
 
@@ -949,8 +956,10 @@ body.theme-light .toast-body[style*="color: white"] {
                   <h1 class="main-title">Here you will lose all your money!</h1>
                   <p class="subtitle">But we haven't implemented it here yet.</p>
                   <div class="d-flex gap-3 flex-wrap">
-                    <a href="src/app/catalog/page.html" class="btn btn-gradient">Play games</a>
-                    <a href="src/app/about/page.html" class="btn btn-outline">About</a>
+                    <a href="src/app/catalog/page.html" class="btn btn-gradient ">Play games</a>
+                    <a href="src/app/about/page.html" class="btn btn-outline ">About</a>
+
+
                   </div>
                 </div>
               </div>
@@ -1137,7 +1146,7 @@ body.theme-light .toast-body[style*="color: white"] {
               <img src="public/Logo.svg" alt="HTML casino" class="logo-svg">
             </a>
           </div>
-          <a href="src/app/user-profile/page.html" class="btn btn-gradient">👤 Profile</a>
+          <a href="src/app/user-profile/page.html" class="btn btn-gradient" style="width: 100px;">👤 Profile</a>
         </div>
         <div class="footer-bottom">
           <nav class="footer-links">
