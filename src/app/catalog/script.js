@@ -29,3 +29,4 @@ $(window).on('scroll', function() {
 $(document).ready(function() {
   console.log("jQuery is ready!");
 });
+
