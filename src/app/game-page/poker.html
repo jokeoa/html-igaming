@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poker - HTML Casino</title>
+    <link rel="stylesheet" href="../../globals.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body class="theme-blue">
+    <div class="layout-container">
+      <header class="header">
+        <nav class="navbar navbar-expand-lg custom-header py-2">
+          <div class="container-fluid px-2 px-lg-3">
+            <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+              <img src="../../../public/Logo.svg" alt="HTML casino" class="me-2" style="height:32px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-2 ms-lg-3 gap-2 gap-lg-3">
+                <li class="nav-item"><a class="nav-link" href="../about/page.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../faq/page.html">FAQ</a></li>
+              </ul>
+              <div class="d-flex align-items-center gap-2">
+                <a href="https://github.com/jokeoa/html-casino" class="btn btn-outline btn-sm px-3 py-1">
+                  <img src="../../../public/GitHub.svg" alt="GitHub" class="me-1" style="height:16px;" />
+                  GitHub
+                </a>
+                <a href="../user-profile/page.html" class="btn btn-gradient btn-sm px-3 py-1">👤 Profile</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main-content">
+      <div class="game-container container py-4 py-lg-5">
+        <div class="game-header">
+          <h1 class="game-title">Poker</h1>
+          <p class="game-subtitle">The ultimate strategy card game of skill and luck</p>
+        </div>
+
+        <div class="game-content row g-4 align-items-start">
+          <div class="game-image-section col-12 col-lg-6 order-1 order-lg-1">
+            <div class="gallery-container">
+              <h3 class="gallery-title">Game Gallery</h3>
+              <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                  <button type="button" data-bs-target="#gameCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="../../../public/poker/PokerTable.jpg" class="d-block w-100" alt="Poker table">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/PokerCards.jpg" class="d-block w-100" alt="Poker cards">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images.jpeg" class="d-block w-100" alt="Poker game">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-2.jpeg" class="d-block w-100" alt="Card dealing">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-3.jpeg" class="d-block w-100" alt="Casino chips">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-4.jpeg" class="d-block w-100" alt="Poker hand">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-5.jpeg" class="d-block w-100" alt="Casino table">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-6.jpeg" class="d-block w-100" alt="Playing cards">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-7.jpeg" class="d-block w-100" alt="Poker setup">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../../../public/poker/images-8.jpeg" class="d-block w-100" alt="Card game">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-info-section col-12 col-lg-6 order-2 order-lg-2">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">About Poker</h3>
+                    <p class="card-text">
+                      Poker is a legendary card game combining strategy, psychology, 
+                      and luck. Build the best five-card hand using your cards and 
+                      community cards. Master hand rankings from High Card to Royal 
+                      Flush, and use betting rounds to outplay your opponents.
+                    </p>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">How to Play</h3>
+                    <ul class="card-text">
+                      <li>Each player receives 2 private hole cards</li>
+                      <li>Five community cards are dealt in stages</li>
+                      <li>
+                        Bet, check, raise, or fold during each round
+                      </li>
+                      <li>Make the best 5-card hand from 7 available cards</li>
+                      <li>Win the pot with the strongest hand or bluff!</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Game Stats</h3>
+                    <div class="card-text">
+                      <p><strong>Difficulty:</strong> Medium</p>
+                      <p><strong>Min Bet:</strong> $10</p>
+                      <p><strong>Max Bet:</strong> $1000</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="col">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title">Ready to Play?</h3>
+                    <p class="card-text">Start playing now or explore more games in our catalog.</p>
+                    <nav class="d-grid gap-2" aria-label="Game actions">
+                      <a href="../games/poker/poker.html" class="btn btn-gradient" role="button">Play Now</a>
+                      <a href="../catalog/page.html" class="btn btn-outline" role="button">Back to Games</a>
+                    </nav>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </main>
+
+      <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../../../index.html">
+              <img
+                src="../../../public/Logo.svg"
+                alt="HTML casino"
+                class="footer-logo-svg"
+              />
+            </a>
+          </div>
+          <a href="../user-profile/page.html" class="btn btn-gradient">👤 Profile</a>
+        </div>
+        <div class="footer-bottom">
+          <nav class="footer-links">
+            <a href="../../../index.html" class="footer-link">Main</a>
+            <a href="../about/page.html" class="footer-link">About</a>
+            <a href="../user-policy/page.html" class="footer-link"
+              >User policy</a
+            >
+            <a href="../faq/page.html" class="footer-link">FAQ</a>
+            <a href="../catalog/page.html" class="footer-link">Games</a>
+            <a href="../sitemap/page.html" class="footer-link">Site map</a>
+          </nav>
+          <p class="footer-description">
+            Made by Yandex Gophers team: Madiyar Sarbayev, Vladislav Kutsenko,
+            Amir Alenov, and Bekdaulet Bolatov for Web Technologies 1 course.
+            This project was created for educational purposes by the student
+            team at Astana IT University.
+          </p>
+        </div>
+      </div>
+      </footer>
+    </div>
+
+    <!-- TASK 4: THEME SWITCHER BUTTON -->
+    <div class="theme-switcher">
+      <button class="theme-btn" onclick="changeTheme()" title="Change Theme">
+        🎨
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/theme-switcher.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </body>
+</html>

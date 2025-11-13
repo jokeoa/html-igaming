@@ -1,0 +1,315 @@
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+.game-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dealer-area, .player-area, .community-area {
+  min-height: 200px;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.community-area {
+  min-height: 180px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.cards-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 140px;
+  align-items: center;
+}
+
+.card {
+  width: 100px;
+  height: 140px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: #000;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.red {
+  color: #dc3545;
+}
+
+.card.back {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-suit {
+  font-size: 2rem;
+}
+
+.hand-display {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #ffc107;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chips-display {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #28a745;
+  margin-left: 1rem;
+}
+
+.pot-display {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffc107;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.hotbar {
+  position: sticky;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hotbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.game-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  transition: transform 0.2s;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  background: transparent;
+  transition: all 0.2s;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.message.win {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+  border: 2px solid #28a745;
+}
+
+.message.lose {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+.message.push {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  display: none;
+  animation: slideInRight 0.3s ease;
+}
+
+.toast-notification.toast-win {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.toast-notification.toast-lose {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.toast-notification.toast-start {
+  background: linear-gradient(135deg, #ff6500, #ff8434);
+  color: white;
+}
+
+.toast-notification.toast-push {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.toast-notification.hiding {
+  animation: slideOutRight 0.3s ease;
+}
+
+.toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.toast-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+.toast-message {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+    width: 80px;
+    height: 112px;
+    padding: 0.5rem;
+  }
+  
+  .card-value {
+    font-size: 1.2rem;
+  }
+  
+  .card-suit {
+    font-size: 1.5rem;
+  }
+  
+  .game-info h1 {
+    font-size: 2rem;
+  }
+  
+  .pot-display {
+    font-size: 1.2rem;
+  }
+  
+  .dealer-area, .player-area, .community-area {
+    padding: 1rem;
+  }
+}
