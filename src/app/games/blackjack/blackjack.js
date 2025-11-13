@@ -11,12 +11,18 @@ let deck = [];
 let playerHand = [];
 let dealerHand = [];
 let gameState = 'bet';
+let currentBet = 0;
+let userApi = null;
+
+const betAmountInput = document.getElementById('betAmountInput');
+const betErrorEl = document.getElementById('betError');
+const balanceDisplayEl = document.getElementById('playerTokenBalance');
 
 // jQuery Toast Notification Function
 function showToast(title, message, type) {
   const $toast = $('#toastNotification');
-  const $title = $('#toastTitle');
-  const $message = $('#toastMessage');
+  const $title = $('#gameToastTitle');
+  const $message = $('#gameToastMessage');
   
   // Remove all type classes
   $toast.removeClass('toast-win toast-lose toast-start toast-push hiding');
@@ -72,6 +78,33 @@ const elements = {
   splitBtn: document.getElementById('splitBtn'),
   playAgainBtn: document.getElementById('playAgainBtn')
 };
+
+function getUserApi() {
+  if (!userApi && window.htmlCasinoUser) {
+    userApi = window.htmlCasinoUser;
+  }
+  return userApi;
+}
+
+function refreshTokenBalance() {
+  const api = getUserApi();
+  if (!balanceDisplayEl || !api || !api.getUserSnapshot) return;
+  const snapshot = api.getUserSnapshot();
+  balanceDisplayEl.textContent = snapshot.balance;
+}
+
+function hideBetError() {
+  if (betErrorEl) {
+    betErrorEl.style.display = 'none';
+  }
+}
+
+function showBetError(message) {
+  if (betErrorEl) {
+    betErrorEl.textContent = message;
+    betErrorEl.style.display = 'block';
+  }
+}
 
 function createDeck() {
   deck = [];
@@ -197,6 +230,28 @@ function checkSplitAvailable() {
 }
 
 function startGame() {
+  const api = getUserApi();
+  if (!api || typeof api.spendTokens !== 'function') {
+    showToastMessage('Tokens unavailable', 'We could not access your casino wallet. Try refreshing the page.');
+    return;
+  }
+
+  const betAmount = Math.floor(Number(betAmountInput ? betAmountInput.value : 0));
+  if (!Number.isFinite(betAmount) || betAmount <= 0) {
+    showBetError('Enter a positive bet amount.');
+    return;
+  }
+
+  const spendResult = api.spendTokens(betAmount, { silent: true });
+  if (!spendResult || !spendResult.success) {
+    showBetError('Not enough tokens for this bet. Top up your balance first.');
+    refreshTokenBalance();
+    return;
+  }
+
+  currentBet = betAmount;
+  refreshTokenBalance();
+  hideBetError();
   hideMessage();
   createDeck();
   playerHand = [];
@@ -280,6 +335,7 @@ function endGame(result, message) {
   } else {
     showToast('Push! 🤝', message, 'push');
   }
+  handleBetOutcome(result);
 }
 
 function playAgain() {
@@ -289,6 +345,40 @@ function playAgain() {
   elements.dealerScore.textContent = '';
   hideMessage();
   switchStage('bet');
+  hideBetError();
+  currentBet = 0;
+  refreshTokenBalance();
+}
+
+function handleBetOutcome(result) {
+  if (!currentBet) {
+    refreshTokenBalance();
+    return;
+  }
+
+  const api = getUserApi();
+  if (!api || typeof api.addTokens !== 'function') {
+    currentBet = 0;
+    refreshTokenBalance();
+    return;
+  }
+
+  let payout = 0;
+  if (result === 'win') {
+    payout = currentBet * 2;
+  } else if (result === 'push') {
+    payout = currentBet;
+  }
+
+  if (payout > 0) {
+    api.addTokens(payout, { silent: true });
+    showToastMessage('Tokens won', `+${payout} tokens added to your balance.`);
+  } else if (result === 'lose') {
+    showToastMessage('Tokens lost', `-${currentBet} tokens lost in this round.`);
+  }
+
+  currentBet = 0;
+  refreshTokenBalance();
 }
 
 elements.placeBetBtn.addEventListener('click', startGame);
@@ -298,3 +388,15 @@ elements.splitBtn.addEventListener('click', split);
 elements.playAgainBtn.addEventListener('click', playAgain);
 
 switchStage('bet');
+
+if (betAmountInput) {
+  betAmountInput.addEventListener('input', () => {
+    hideBetError();
+  });
+}
+
+if (window.htmlCasinoUser && typeof window.htmlCasinoUser.onChange === 'function') {
+  window.htmlCasinoUser.onChange(refreshTokenBalance);
+}
+
+setTimeout(refreshTokenBalance, 0);

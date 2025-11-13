@@ -1,0 +1,10 @@
+ index.html                                 | 154 [32m+++++++++++[m[31m-[m
+ src/app/games/Roulette/roulette-games.html | 154 [32m+++++++++++[m[31m-[m
+ src/app/games/Roulette/roulette-games.js   | 141 [32m++++++++++[m[31m-[m
+ src/app/games/blackjack/blackjack.html     |  96 [32m+++++++[m[31m-[m
+ src/app/games/blackjack/blackjack.js       | 106 [32m+++++++[m[31m-[m
+ src/app/user-profile/index.js              | 120 [32m+++++++[m[31m--[m
+ src/app/user-profile/page.html             | 182 [32m+++++++++++++[m[31m-[m
+ src/globals.css                            |  81 [32m+++++++[m
+ src/js/index.js                            | 374 [32m++++++++++++++++++++++++++++[m[31m-[m
+ 9 files changed, 1370 insertions(+), 38 deletions(-)

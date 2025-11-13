@@ -1,10 +1,59 @@
+const RED_NUMBERS = new Set([1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]);
+
 class RouletteGame {
     constructor() {
         this.numbers = Array.from({length: 37}, (_, i) => i);
         this.isSpinning = false;
         this.wheelCanvas = null;
         this.wheelCtx = null;
+        this.currentBet = 0;
+        this.currentChoice = 'red';
+        this.userApi = null;
+        this.unsubscribeUserChange = null;
+        this.balanceEl = document.getElementById('rouletteTokenBalance');
+        this.betAmountInput = document.getElementById('rouletteBetAmount');
+        this.betChoiceSelect = document.getElementById('rouletteBetChoice');
+        this.betErrorEl = document.getElementById('rouletteBetError');
+        this.resultMessageEl = document.getElementById('resultMessage');
         this.init();
+        this.refreshBalance();
+    }
+
+    getUserApi() {
+        if (!this.userApi && window.htmlCasinoUser) {
+            this.userApi = window.htmlCasinoUser;
+        }
+
+        if (this.userApi && !this.unsubscribeUserChange && typeof this.userApi.onChange === 'function') {
+            this.unsubscribeUserChange = this.userApi.onChange(() => this.refreshBalance());
+        }
+
+        return this.userApi;
+    }
+
+    refreshBalance() {
+        const api = this.getUserApi();
+        if (!this.balanceEl || !api || typeof api.getUserSnapshot !== 'function') return;
+        const snapshot = api.getUserSnapshot();
+        this.balanceEl.textContent = snapshot.balance;
+    }
+
+    hideBetError() {
+        if (this.betErrorEl) {
+            this.betErrorEl.style.display = 'none';
+        }
+    }
+
+    showBetError(message) {
+        if (this.betErrorEl) {
+            this.betErrorEl.textContent = message;
+            this.betErrorEl.style.display = 'block';
+        }
+    }
+
+    getColorForNumber(number) {
+        if (number === 0) return 'green';
+        return RED_NUMBERS.has(number) ? 'red' : 'black';
     }
 
     init() {
@@ -12,6 +61,8 @@ class RouletteGame {
         this.wheelCtx = this.wheelCanvas.getContext('2d');
         this.drawWheel();
         this.setupEvents();
+        this.getUserApi();
+        this.hideBetError();
     }
 
     drawWheel() {
@@ -35,7 +86,7 @@ class RouletteGame {
             const startAngle = index * angleStep;
             const endAngle = (index + 1) * angleStep;
             const isZero = num === 0;
-            const isRed = !isZero && [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36].includes(num);
+            const isRed = !isZero && RED_NUMBERS.has(num);
             ctx.fillStyle = isZero ? green : (isRed ? red : black);
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);
@@ -84,15 +135,51 @@ class RouletteGame {
                 this.spinWheel();
             }
         });
+        if (this.betAmountInput) {
+            this.betAmountInput.addEventListener('input', () => this.hideBetError());
+        }
+        if (this.betChoiceSelect) {
+            this.betChoiceSelect.addEventListener('change', () => this.hideBetError());
+        }
     }
 
     spinWheel() {
         if (this.isSpinning) return;
+
+        const api = this.getUserApi();
+        if (!api || typeof api.spendTokens !== 'function') {
+            showToastMessage('Tokens unavailable', 'We could not access your casino wallet. Try refreshing the page.');
+            return;
+        }
+
+        const betAmount = Math.floor(Number(this.betAmountInput ? this.betAmountInput.value : 0));
+        if (!Number.isFinite(betAmount) || betAmount <= 0) {
+            this.showBetError('Enter a positive bet amount.');
+            return;
+        }
+
+        const spendResult = api.spendTokens(betAmount, { silent: true });
+        if (!spendResult || !spendResult.success) {
+            this.showBetError('Not enough tokens for this bet.');
+            this.refreshBalance();
+            return;
+        }
+
+        this.currentBet = betAmount;
+        this.currentChoice = this.betChoiceSelect ? this.betChoiceSelect.value : 'red';
+        this.hideBetError();
+        this.refreshBalance();
+
         this.isSpinning = true;
         const btn = document.getElementById('spinBtn');
         btn.disabled = true;
         btn.style.opacity = '0.7';
-        document.getElementById('resultMessage').textContent = 'SPINNING...';
+        if (this.resultMessageEl) {
+            this.resultMessageEl.textContent = 'SPINNING...';
+            this.resultMessageEl.classList.remove('win-animation');
+        } else {
+            document.getElementById('resultMessage').textContent = 'SPINNING...';
+        }
         const spins = 5 + Math.random() * 3;
         const finalRotation = spins * 360 + Math.random() * 360;
 
@@ -118,7 +205,12 @@ class RouletteGame {
         const angleStep = (Math.PI * 2) / 37;
         const resultIndex = Math.floor(normalizedRad / angleStep) % 37;
         const result = this.numbers[resultIndex];
-        document.getElementById('resultMessage').textContent = `Result: ${result}`;
+        const color = this.getColorForNumber(result);
+        if (this.resultMessageEl) {
+            this.resultMessageEl.textContent = `Result: ${result} (${color.toUpperCase()})`;
+        } else {
+            document.getElementById('resultMessage').textContent = `Result: ${result}`;
+        }
         this.playSound(Math.random() > 0.5 ? 'win' : 'lose');
         document.getElementById('spinBtn').disabled = false;
         document.getElementById('spinBtn').style.opacity = '1';
@@ -127,6 +219,49 @@ class RouletteGame {
         setTimeout(() => {
             this.wheelCanvas.style.transform = 'rotate(0deg)';
         }, 200);
+
+        this.handleBetOutcome(result);
+    }
+
+    handleBetOutcome(result) {
+        if (!this.currentBet) {
+            this.refreshBalance();
+            return;
+        }
+
+        const api = this.getUserApi();
+        if (!api || typeof api.addTokens !== 'function') {
+            this.currentBet = 0;
+            this.refreshBalance();
+            return;
+        }
+
+        const color = this.getColorForNumber(result);
+        let payout = 0;
+
+        if ((this.currentChoice === 'red' || this.currentChoice === 'black') && color === this.currentChoice) {
+            payout = this.currentBet * 2;
+        } else if (this.currentChoice === 'green' && color === 'green') {
+            payout = this.currentBet * 15;
+        }
+
+        if (payout > 0) {
+            api.addTokens(payout, { silent: true });
+            if (typeof showToastMessage === 'function') {
+                showToastMessage('Roulette win!', `+${payout} tokens added to your balance.`);
+            }
+            if (this.resultMessageEl) {
+                this.resultMessageEl.classList.add('win-animation');
+                setTimeout(() => this.resultMessageEl && this.resultMessageEl.classList.remove('win-animation'), 800);
+            }
+        } else {
+            if (typeof showToastMessage === 'function') {
+                showToastMessage('Roulette loss', `-${this.currentBet} tokens lost on this spin.`);
+            }
+        }
+
+        this.currentBet = 0;
+        this.refreshBalance();
     }
 
     playSound(type) {
