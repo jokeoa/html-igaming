@@ -4,17 +4,19 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-primary);
 }
 
 .main-content {
   flex: 1;
   padding: 2rem 0;
+  background-color: var(--bg-primary);
 }
 
 /* Game Header Card */
 .game-header-card {
   background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
 }
 
@@ -24,20 +26,45 @@
 }
 
 .balance-info .balance-amount {
-  color: var(--accent-color);
+  color: var(--accent-color) !important;
+}
+
+/* Override Bootstrap text classes for theme support */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-success {
+  color: var(--accent-color) !important;
+}
+
+.text-white-50 {
+  color: var(--text-secondary) !important;
+}
+
+#userNameDisplay {
+  color: var(--text-primary) !important;
+}
+
+#userNameNav {
+  color: var(--text-secondary) !important;
+}
+
+.bg-success {
+  background-color: var(--accent-color) !important;
 }
 
 /* Game Cards */
 .dealer-card,
 .player-card {
   background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
 }
 
 .dealer-card .card-title,
 .player-card .card-title {
-  color: white;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -95,17 +122,17 @@
 .score-display {
   font-size: 1.25rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 /* Hotbar */
 .hotbar {
   position: sticky;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--bg-primary);
   backdrop-filter: blur(10px);
   padding: 1.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   z-index: 100;
 }
 
@@ -121,7 +148,7 @@
 .game-control-card,
 .post-game-card {
   background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
 }
 
@@ -155,16 +182,16 @@
 }
 
 .btn-outline {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   background: transparent;
   transition: all 0.2s ease;
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--bg-tertiary);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 /* Game Message Alert */
