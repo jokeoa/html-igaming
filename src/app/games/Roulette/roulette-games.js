@@ -4,6 +4,7 @@ class RouletteGame {
         this.isSpinning = false;
         this.wheelCanvas = null;
         this.wheelCtx = null;
+        this.currentBet = 0;
         this.init();
     }
 
@@ -12,6 +13,22 @@ class RouletteGame {
         this.wheelCtx = this.wheelCanvas.getContext('2d');
         this.drawWheel();
         this.setupEvents();
+        this.setupBetControls();
+        
+        // Initialize balance display
+        if (typeof BalanceManager !== 'undefined') {
+            BalanceManager.updateBalanceDisplay();
+        }
+    }
+
+    setupBetControls() {
+        // Quick bet buttons
+        document.querySelectorAll('.bet-quick-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const amount = parseFloat(btn.getAttribute('data-amount'));
+                document.getElementById('betAmount').value = amount;
+            });
+        });
     }
 
     drawWheel() {
@@ -88,11 +105,49 @@ class RouletteGame {
 
     spinWheel() {
         if (this.isSpinning) return;
+        
+        // Get bet amount
+        const betInput = document.getElementById('betAmount');
+        const betAmount = parseFloat(betInput.value) || 10;
+        
+        // Check if user can afford the bet
+        if (typeof BalanceManager !== 'undefined' && !BalanceManager.canAfford(betAmount)) {
+            alert('Insufficient balance! Please deposit more funds to play.');
+            return;
+        }
+        
+        // Deduct bet from balance
+        if (typeof BalanceManager !== 'undefined') {
+            this.currentBet = betAmount;
+            BalanceManager.subtractBalance(betAmount);
+            
+            // Force update balance display
+            const balance = BalanceManager.getBalance() || 0;
+            BalanceManager.updateBalanceDisplay();
+            
+            // Explicitly update balance elements
+            const userBalanceEl = document.getElementById('userBalance');
+            if (userBalanceEl) {
+                userBalanceEl.textContent = '$' + balance.toFixed(2);
+            }
+            
+            // Update nav balance
+            const navBalance = document.getElementById('userBalanceNav');
+            if (navBalance) {
+                navBalance.textContent = '$' + balance.toFixed(2);
+            }
+            
+            // Also update via jQuery if available
+            if (typeof $ !== 'undefined') {
+                $('.user-balance, #userBalance').text('$' + balance.toFixed(2));
+            }
+        }
+        
         this.isSpinning = true;
         const btn = document.getElementById('spinBtn');
         btn.disabled = true;
         btn.style.opacity = '0.7';
-        document.getElementById('resultMessage').textContent = 'SPINNING...';
+        document.getElementById('resultMessage').textContent = `SPINNING... (Bet: $${betAmount.toFixed(2)})`;
         const spins = 5 + Math.random() * 3;
         const finalRotation = spins * 360 + Math.random() * 360;
 
@@ -118,8 +173,55 @@ class RouletteGame {
         const angleStep = (Math.PI * 2) / 37;
         const resultIndex = Math.floor(normalizedRad / angleStep) % 37;
         const result = this.numbers[resultIndex];
-        document.getElementById('resultMessage').textContent = `Result: ${result}`;
-        this.playSound(Math.random() > 0.5 ? 'win' : 'lose');
+        
+        // Determine win/loss (simplified: win on even numbers, lose on odd and 0)
+        const isWin = result !== 0 && result % 2 === 0;
+        let balanceChange = 0;
+        let resultMessage = `Result: ${result}`;
+        
+        if (typeof BalanceManager !== 'undefined' && this.currentBet > 0) {
+            let finalBalance = 0;
+            
+            if (isWin) {
+                // Win: get bet back + win amount (2x bet)
+                balanceChange = this.currentBet * 2;
+                BalanceManager.addBalance(balanceChange);
+                finalBalance = BalanceManager.getBalance() || 0;
+                resultMessage += ` - WIN! You won $${balanceChange.toFixed(2)}!`;
+                this.playSound('win');
+            } else {
+                // Lose: bet already deducted
+                finalBalance = BalanceManager.getBalance() || 0;
+                resultMessage += ` - LOSE! You lost $${this.currentBet.toFixed(2)}.`;
+                this.playSound('lose');
+            }
+            
+            // Force update balance display after result
+            BalanceManager.updateBalanceDisplay();
+            
+            // Explicitly update balance elements
+            const userBalanceEl = document.getElementById('userBalance');
+            if (userBalanceEl) {
+                userBalanceEl.textContent = '$' + finalBalance.toFixed(2);
+            }
+            
+            // Update nav balance
+            const navBalance = document.getElementById('userBalanceNav');
+            if (navBalance) {
+                navBalance.textContent = '$' + finalBalance.toFixed(2);
+            }
+            
+            // Also update via jQuery if available
+            if (typeof $ !== 'undefined') {
+                $('.user-balance, #userBalance').text('$' + finalBalance.toFixed(2));
+            }
+            
+            this.currentBet = 0;
+        } else {
+            this.playSound(Math.random() > 0.5 ? 'win' : 'lose');
+        }
+        
+        document.getElementById('resultMessage').textContent = resultMessage;
         document.getElementById('spinBtn').disabled = false;
         document.getElementById('spinBtn').style.opacity = '1';
         this.isSpinning = false;

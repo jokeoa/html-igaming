@@ -1,5 +1,5 @@
-// TASK 4: BACKGROUND COLOR CHANGER (with persistent storage across all pages)
-const themes = ['theme-light', 'theme-dark', 'theme-blue', 'theme-purple', 'theme-green', 'theme-red'];
+// Theme switcher - only light and dark themes
+const themes = ['theme-light', 'theme-dark'];
 let currentThemeIndex = 0;
 
 function applyTheme(theme) {
