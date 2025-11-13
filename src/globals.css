@@ -301,11 +301,11 @@ body.theme-light [style*="color:rgba(255, 255, 255"] {
 }
 
 .btn-outline {
-    border: 1px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
     background: transparent;
+    transition: all 0.3s;
 }
-
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -314,6 +314,7 @@ body.theme-light [style*="color:rgba(255, 255, 255"] {
     background: linear-gradient(to right, #ff6500, #ff8434);
     color: white;
     border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-gradient:hover {
